@@ -1,0 +1,75 @@
+import { Button } from '@/components/ui/button';
+import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import AppLayout from '@/layouts/app-layout';
+import { type BreadcrumbItem } from '@/types';
+import { Head, usePage } from '@inertiajs/react';
+import { Lightbulb, Pencil, Trash } from 'lucide-react';
+
+type Logistique = {
+    id: string;
+    designation: string;
+};
+
+type PageProps = {
+    logistiques: Logistique[];
+};
+
+const breadcrumbs: BreadcrumbItem[] = [
+    {
+        title: 'Logistiques',
+        href: '/logistiques',
+    },
+];
+
+export default function Logistiques() {
+    const { logistiques } = usePage<PageProps>().props;
+    return (
+        <AppLayout breadcrumbs={breadcrumbs}>
+            <Head title="Logistiques" />
+            <div className="m-4 flex justify-between">
+                <h1 className="text-2xl font-bold">Logistique</h1>
+                <Button>Ajouter une logistique</Button>
+            </div>
+            <Table>
+                <TableCaption>Liste des Logistiques.</TableCaption>
+                <TableHeader>
+                    <TableRow>
+                        <TableHead className="w-[100px]">N°</TableHead>
+                        <TableHead>Titre</TableHead>
+                        <TableHead className="text-right">Actions</TableHead>
+                    </TableRow>
+                </TableHeader>
+                <TableBody>
+                    {logistiques && logistiques.length > 0 ? (
+                        logistiques.map((logistique) => (
+                            <TableRow key={logistique.id}>
+                                <TableCell className="font-medium">{logistique.id}</TableCell>
+                                <TableCell>{logistique.designation}</TableCell>
+                                <TableCell className="flex justify-end text-right">
+                                    <div className="flex justify-end gap-2">
+                                        <Button size="sm" className="bg-green-500 hover:bg-green-700">
+                                            <Lightbulb />
+                                        </Button>
+                                        <Button size="sm" className="bg-red-500 hover:bg-red-700">
+                                            <Trash />
+                                        </Button>
+                                        <Button size="sm" className="bg-blue-500 hover:bg-blue-700">
+                                            <Pencil />
+                                        </Button>
+                                    </div>
+                                </TableCell>
+                            </TableRow>
+                        ))
+                    ) : (
+                        <TableRow>
+                            <TableCell colSpan={3} className="text-center">
+                                Aucune image trouvée
+                            </TableCell>
+                        </TableRow>
+                    )}
+                </TableBody>
+            </Table>
+            <div className="flex h-full flex-1 flex-col gap-4 overflow-x-auto rounded-xl p-4"></div>
+        </AppLayout>
+    );
+}
