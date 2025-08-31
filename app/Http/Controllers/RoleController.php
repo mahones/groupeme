@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Inertia\Inertia;
+use App\Models\Role;
 
 class RoleController extends Controller
 {
@@ -11,7 +13,10 @@ class RoleController extends Controller
      */
     public function index()
     {
-        //
+        $roles = Role::all();
+        return Inertia::render('Dashboard/Role/Index', [
+            'roles' => $roles
+        ]);
     }
 
     /**

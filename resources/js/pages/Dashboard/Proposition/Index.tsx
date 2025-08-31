@@ -1,44 +1,62 @@
-import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Button } from '@/components/ui/button';
+import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import AppLayout from '@/layouts/app-layout';
 import { type BreadcrumbItem } from '@/types';
-import { Head } from '@inertiajs/react';
+import { Head, usePage } from '@inertiajs/react';
 import { Lightbulb, Pencil, Trash } from 'lucide-react';
 
+type Proposition = {
+    id: number;
+    titre: string;
+    lien_url_alibaba: string;
+    user_id: number;
+    user?: User;
+};
 
+type User = {
+    id: number;
+    name: string;
+};
+
+type PageProps = {
+    propositions: Proposition[];
+};
 const breadcrumbs: BreadcrumbItem[] = [
     {
-        title: 'Proposition',
-        href: '/proposition',
+        title: 'Propositions',
+        href: '/propositions',
     },
 ];
 
 export default function Proposition() {
+    const { propositions } = usePage<PageProps>().props;
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Proposition" />
             <div className="m-4 flex justify-between">
-                <h1 className="text-2xl font-bold">
-                    Proposition 
-                </h1>
+                <h1 className="text-2xl font-bold">Proposition</h1>
                 <Button>Ajouter une proposition</Button>
             </div>
             <Table>
                 <TableCaption>Liste de tous les pays.</TableCaption>
                 <TableHeader>
                     <TableRow>
-                        <TableHead className="w-[100px]">Invoice</TableHead>
-                        <TableHead>Status</TableHead>
-                        <TableHead>Method</TableHead>
-                        <TableHead className="text-right">Amount</TableHead>
+                        <TableHead className="w-[100px]">N°</TableHead>
+                        <TableHead>Titre</TableHead>
+                        <TableHead>Lien du produit alibaba</TableHead>
+                        <TableHead>Utilisateur</TableHead>
+                        <TableHead className="text-right">Action</TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
-                    <TableRow>
-                        <TableCell className="font-medium">INV001</TableCell>
-                        <TableCell>Paid</TableCell>
-                        <TableCell>Credit Card</TableCell>
-                        <TableCell className="flex justify-end text-right">
+                    {propositions && propositions.length > 0 ? (
+                        propositions.map((proposition) => (
+                            <TableRow key={proposition.id}>
+                                <TableCell className="font-medium">{proposition.id}</TableCell>
+                                <TableCell>{proposition.titre}</TableCell>
+                                <TableCell>{proposition.lien_url_alibaba}</TableCell>
+                                <TableCell>{proposition.user?.name}</TableCell>
+                                <TableCell className="flex justify-end text-right">
                                     <div className="flex justify-end gap-2">
                                         <Button size="sm" className="bg-green-500 hover:bg-green-700">
                                             <Lightbulb />
@@ -51,7 +69,15 @@ export default function Proposition() {
                                         </Button>
                                     </div>
                                 </TableCell>
-                    </TableRow>
+                            </TableRow>
+                        ))
+                    ) : (
+                        <TableRow>
+                            <TableCell colSpan={4} className="text-center">
+                                Aucune proposition trouvée.
+                            </TableCell>
+                        </TableRow>
+                    )}
                 </TableBody>
             </Table>
             <div className="flex h-full flex-1 flex-col gap-4 overflow-x-auto rounded-xl p-4"></div>

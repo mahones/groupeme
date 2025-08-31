@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Proposition;
 
 class PropositionController extends Controller
 {
@@ -11,7 +12,10 @@ class PropositionController extends Controller
      */
     public function index()
     {
-        //
+        $propositions = Proposition::with('user')->get();
+        return inertia('Dashboard/Proposition/Index', [
+            'propositions' => $propositions
+        ]);
     }
 
     /**

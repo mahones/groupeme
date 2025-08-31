@@ -13,6 +13,7 @@ use App\Http\Controllers\ImageController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PaysController;
+use App\Http\Controllers\PropositionController;
 
 Route::get('/', function () {
     return Inertia::render('welcome');
@@ -45,6 +46,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // Participants
     Route::get('participants', [ParticiperGroupementController::class, 'index'])->name('participants.index');
+
+    // Propositions
+    Route::get('propositions', [PropositionController::class, 'index'])->name('propositions.index');
 
     // Roles
     Route::get('roles', [RoleController::class, 'index'])->name('roles.index');

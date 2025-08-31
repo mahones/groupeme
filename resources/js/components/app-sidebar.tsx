@@ -4,7 +4,7 @@ import { NavUser } from '@/components/nav-user';
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '@/components/ui/sidebar';
 import { type NavItem } from '@/types';
 import { Link } from '@inertiajs/react';
-import { BellElectric, BookOpen, Flag, Folder, Forklift, Group, Images, LayoutGrid, PackageOpen, Ruler, Users, Waypoints } from 'lucide-react';
+import { BellElectric, BookOpen, Flag, Folder, Forklift, Group, Images, LayoutGrid, PackageOpen, Ruler, Users, Waypoints, HandHelping  } from 'lucide-react';
 import AppLogo from './app-logo';
 
 const mainNavItems: NavItem[] = [
@@ -42,6 +42,11 @@ const mainNavItems: NavItem[] = [
         title: 'Participants',
         href: '/participants',
         icon: BellElectric,
+    },
+    {
+        title: 'Propositions',
+        href: '/propositions',
+        icon: HandHelping ,
     },
     {
         title: 'Pays',

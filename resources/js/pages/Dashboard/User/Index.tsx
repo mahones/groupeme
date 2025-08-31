@@ -1,10 +1,26 @@
-import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Button } from '@/components/ui/button';
+import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import AppLayout from '@/layouts/app-layout';
 import { type BreadcrumbItem } from '@/types';
-import { Head } from '@inertiajs/react';
+import { Head, usePage } from '@inertiajs/react';
 import { Lightbulb, Pencil, Trash } from 'lucide-react';
 
+type User = {
+    id: number;
+    telephone: string;
+    email: string;
+    name: string;
+    role_id: number;
+    role?: Role;
+
+};
+type Role = {
+    id: number;
+    designation: string;
+};
+type PageProps = {
+    users: User[];
+};
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -14,31 +30,36 @@ const breadcrumbs: BreadcrumbItem[] = [
 ];
 
 export default function Users() {
+    const { users } = usePage<PageProps>().props;
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Users" />
             <div className="m-4 flex justify-between">
-                <h1 className="text-2xl font-bold">
-                    Utilisateurs
-                </h1>
+                <h1 className="text-2xl font-bold">Utilisateurs</h1>
                 <Button>Ajouter un utilisateur</Button>
             </div>
             <Table>
                 <TableCaption>Liste de tous les utilisateurs.</TableCaption>
                 <TableHeader>
                     <TableRow>
-                        <TableHead className="w-[100px]">Invoice</TableHead>
-                        <TableHead>Status</TableHead>
-                        <TableHead>Method</TableHead>
-                        <TableHead className="text-right">Amount</TableHead>
+                        <TableHead className="w-[100px]">N°</TableHead>
+                        <TableHead>Nom</TableHead>
+                        <TableHead>Téléphone</TableHead>
+                        <TableHead>Email</TableHead>
+                        <TableHead>Role</TableHead>
+                        <TableHead className="text-right">Action</TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
-                    <TableRow>
-                        <TableCell className="font-medium">INV001</TableCell>
-                        <TableCell>Paid</TableCell>
-                        <TableCell>Credit Card</TableCell>
-                        <TableCell className="flex justify-end text-right">
+                    {users && users.length > 0 ? (
+                        users.map((user) => (
+                            <TableRow key={user.id}>
+                                <TableCell className="font-medium">{user.id}</TableCell>
+                                <TableCell>{user.name}</TableCell>
+                                <TableCell>{user.telephone}</TableCell>
+                                <TableCell>{user.email}</TableCell>
+                                <TableCell>{user.role?.designation}</TableCell>
+                                <TableCell className="flex justify-end text-right">
                                     <div className="flex justify-end gap-2">
                                         <Button size="sm" className="bg-green-500 hover:bg-green-700">
                                             <Lightbulb />
@@ -51,7 +72,15 @@ export default function Users() {
                                         </Button>
                                     </div>
                                 </TableCell>
-                    </TableRow>
+                            </TableRow>
+                        ))
+                    ) : (
+                        <TableRow>
+                            <TableCell colSpan={6} className="text-center">
+                                Aucune donnée disponible
+                            </TableCell>
+                        </TableRow>
+                    )}
                 </TableBody>
             </Table>
             <div className="flex h-full flex-1 flex-col gap-4 overflow-x-auto rounded-xl p-4"></div>

@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ParticiperGroupement;
 use Illuminate\Http\Request;
-
+use Inertia\Inertia;
 class ParticiperGroupementController extends Controller
 {
     /**
@@ -11,7 +12,10 @@ class ParticiperGroupementController extends Controller
      */
     public function index()
     {
-        //
+        $participants = ParticiperGroupement::with('user', 'groupement')->get();
+        return Inertia::render('Dashboard/Participants/Index', [
+            'participants' => $participants
+        ]);
     }
 
     /**
