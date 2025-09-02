@@ -37,9 +37,12 @@ class ParticiperGroupementController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(ParticiperGroupement $participant)
     {
-        //
+        $participant = ParticiperGroupement::with('user', 'groupement')->find($participant->id);
+        return Inertia::render('Dashboard/Participants/Show', [
+            'participant' => $participant
+        ]);
     }
 
     /**

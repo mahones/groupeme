@@ -3,9 +3,9 @@ import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, Tabl
 import { Button } from '@/components/ui/button';
 import AppLayout from '@/layouts/app-layout';
 import { type BreadcrumbItem } from '@/types';
-import { Head, usePage } from '@inertiajs/react';
-import { Lightbulb, Pencil, Trash } from 'lucide-react';
 import { Participant } from '@/types/Participant';
+import { Head, Link, usePage } from '@inertiajs/react';
+import { Lightbulb, Pencil, Trash } from 'lucide-react';
 
 type PageProps = {
     participants: Participant[];
@@ -49,13 +49,16 @@ export default function Participants() {
                                 <TableCell>{participant.statut}</TableCell>
                                 <TableCell className="flex justify-end text-right">
                                     <div className="flex justify-end gap-2">
-                                        <Button size="sm" className="bg-green-500 hover:bg-green-700 text-white hover:text-gray-300">
-                                            <Lightbulb />
-                                        </Button>
-                                        <Button size="sm" className="bg-red-500 hover:bg-red-700 text-white hover:text-gray-300">
+                                        <Link href={route('participants.show', participant.id)}>
+                                            <Button size="sm" className="bg-green-500 text-white hover:bg-green-700 hover:text-gray-300">
+                                                <Lightbulb />
+                                            </Button>
+                                        </Link>
+
+                                        <Button size="sm" className="bg-red-500 text-white hover:bg-red-700 hover:text-gray-300">
                                             <Trash />
                                         </Button>
-                                        <Button size="sm" className="bg-blue-500 hover:bg-blue-700 text-white hover:text-gray-300">
+                                        <Button size="sm" className="bg-blue-500 text-white hover:bg-blue-700 hover:text-gray-300">
                                             <Pencil />
                                         </Button>
                                     </div>

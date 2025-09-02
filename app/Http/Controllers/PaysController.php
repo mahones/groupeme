@@ -38,9 +38,12 @@ class PaysController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Pays $pays)
     {
-        //
+        $pays_find = Pays::find($pays->id);
+        return Inertia::render('Dashboard/Pays/Show', [
+            'pays' => $pays_find
+        ]);
     }
 
     /**

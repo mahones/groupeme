@@ -2,7 +2,7 @@ import { Button } from '@/components/ui/button';
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import AppLayout from '@/layouts/app-layout';
 import { type BreadcrumbItem } from '@/types';
-import { Head, usePage } from '@inertiajs/react';
+import { Link, Head, usePage } from '@inertiajs/react';
 import { Lightbulb, Pencil, Trash } from 'lucide-react';
 import { Logistique } from '@/types/Logistique';
 
@@ -43,9 +43,11 @@ export default function Logistiques() {
                                 <TableCell>{logistique.designation}</TableCell>
                                 <TableCell className="flex justify-end text-right">
                                     <div className="flex justify-end gap-2">
-                                        <Button size="sm" className="bg-green-500 hover:bg-green-700 text-white hover:text-gray-300">
-                                            <Lightbulb />
-                                        </Button>
+                                        <Link href={route('logistiques.show', logistique.id)}>
+                                            <Button size="sm" className="bg-green-500 hover:bg-green-700 text-white hover:text-gray-300">
+                                                <Lightbulb />
+                                            </Button>
+                                        </Link>
                                         <Button size="sm" className="bg-red-500 hover:bg-red-700 text-white hover:text-gray-300">
                                             <Trash />
                                         </Button>
@@ -59,7 +61,7 @@ export default function Logistiques() {
                     ) : (
                         <TableRow>
                             <TableCell colSpan={3} className="text-center">
-                                Aucune image trouvée
+                                Aucun moyen de transport trouvé
                             </TableCell>
                         </TableRow>
                     )}

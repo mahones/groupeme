@@ -2,17 +2,11 @@ import { Button } from '@/components/ui/button';
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import AppLayout from '@/layouts/app-layout';
 import { type BreadcrumbItem } from '@/types';
-import { Head, usePage } from '@inertiajs/react';
+import { Link, Head, usePage } from '@inertiajs/react';
 import { Lightbulb, Pencil, Trash } from 'lucide-react';
-
-type Pays = {
-    id: string;
-    nom: string;
-    lien_icon: string;
-};
-
+import {Pays as TypePays} from '@/types/Pays' ; 
 type PageProps = {
-    pays: Pays[];
+    pays: TypePays[];
 };
 
 const breadcrumbs: BreadcrumbItem[] = [
@@ -53,9 +47,11 @@ export default function Pays() {
                         <TableCell>{pays.lien_icon}</TableCell>
                         <TableCell className="flex justify-end text-right">
                             <div className="flex justify-end gap-2">
-                                <Button size="sm" className="bg-green-500 hover:bg-green-700 text-white hover:text-gray-300">
-                                    <Lightbulb />
-                                </Button>
+                                <Link href={route('pays.show', pays.id)}>
+                                    <Button size="sm" className="bg-green-500 hover:bg-green-700 text-white hover:text-gray-300">
+                                        <Lightbulb />
+                                    </Button>
+                                </Link>
                                 <Button size="sm" className="bg-red-500 hover:bg-red-700 text-white hover:text-gray-300">
                                     <Trash />
                                 </Button>

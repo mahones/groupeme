@@ -37,9 +37,12 @@ class PropositionController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Proposition $proposition)
     {
-        //
+        $proposition_find = Proposition::with('user')->find($proposition->id)   ;
+        return inertia('Dashboard/Proposition/Show', [
+            'proposition' => $proposition_find
+        ]);
     }
 
     /**

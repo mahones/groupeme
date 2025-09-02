@@ -38,9 +38,12 @@ class LogistiqueController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Logistique $logistique)
     {
-        //
+        $logistique_find = Logistique::find($logistique->id);
+        return Inertia::render('Dashboard/Logistique/Show', [
+            'logistique' => $logistique_find
+        ]);
     }
 
     /**
