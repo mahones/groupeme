@@ -2,16 +2,9 @@ import { Button } from '@/components/ui/button';
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import AppLayout from '@/layouts/app-layout';
 import { type BreadcrumbItem } from '@/types';
-import { Head, usePage } from '@inertiajs/react';
+import { Categorie } from '@/types/Categorie';
+import { Head, Link, usePage } from '@inertiajs/react';
 import { Lightbulb, Pencil, Trash } from 'lucide-react';
-
-//définir le type pour une catégorie
-type Categorie = {
-    id: number;
-    designation: string;
-    parent_id?: number;
-    parent?: Categorie;
-};
 
 //définir le type pour les props de la page
 type PageProps = {
@@ -53,13 +46,16 @@ export default function Categories() {
                                 <TableCell>{categorie.parent ? categorie.parent.designation : 'N/A'}</TableCell>
                                 <TableCell className="text-right">
                                     <div className="flex justify-end gap-2">
-                                        <Button size="sm" className="bg-green-500 hover:bg-green-700">
-                                            <Lightbulb />
-                                        </Button>
-                                        <Button size="sm" className="bg-red-500 hover:bg-red-700">
+                                        <Link href={route('categories.show', { id: categorie.id })}>
+                                            <Button size="sm" className="bg-green-500 hover:bg-green-700 text-white hover:text-gray-300">
+                                                <Lightbulb />
+                                            </Button>
+                                        </Link>
+
+                                        <Button size="sm" className="bg-red-500 hover:bg-red-700 text-white hover:text-gray-300">
                                             <Trash />
                                         </Button>
-                                        <Button size="sm" className="bg-blue-500 hover:bg-blue-700">
+                                        <Button size="sm" className="bg-blue-500 hover:bg-blue-700 text-white hover:text-gray-300">
                                             <Pencil />
                                         </Button>
                                     </div>

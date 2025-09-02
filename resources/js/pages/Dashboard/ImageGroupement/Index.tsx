@@ -2,19 +2,9 @@ import { Button } from '@/components/ui/button';
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import AppLayout from '@/layouts/app-layout';
 import { type BreadcrumbItem } from '@/types';
-import { Head, usePage } from '@inertiajs/react';
+import { Image } from '@/types/Image';
+import { Link, Head, usePage } from '@inertiajs/react';
 import { Lightbulb, Pencil, Trash } from 'lucide-react';
-
-type Image = {
-    id: number;
-    image_url: string;
-    groupement_id?: number;
-    groupement?: Groupement;
-};
-type Groupement = {
-    id: number;
-    titre: string;
-};
 
 type PageProps = {
     images: Image[];
@@ -54,13 +44,15 @@ export default function Images() {
                                 <TableCell>{image.groupement?.titre}</TableCell>
                                 <TableCell className="flex justify-end text-right">
                                     <div className="flex justify-end gap-2">
-                                        <Button size="sm" className="bg-green-500 hover:bg-green-700">
-                                            <Lightbulb />
-                                        </Button>
-                                        <Button size="sm" className="bg-red-500 hover:bg-red-700">
+                                        <Link href={route('images_groupement.show', image.id)}>
+                                            <Button size="sm" className="bg-green-500 text-white hover:bg-green-700 hover:text-gray-300">
+                                                <Lightbulb />
+                                            </Button>
+                                        </Link>
+                                        <Button size="sm" className="bg-red-500 text-white hover:bg-red-700 hover:text-gray-300">
                                             <Trash />
                                         </Button>
-                                        <Button size="sm" className="bg-blue-500 hover:bg-blue-700">
+                                        <Button size="sm" className="bg-blue-500 text-white hover:bg-blue-700 hover:text-gray-300">
                                             <Pencil />
                                         </Button>
                                     </div>

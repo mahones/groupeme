@@ -27,34 +27,56 @@ Route::middleware(['auth', 'verified'])->group(function () {
         return Inertia::render('Dashboard/dashboard');
     })->name('dashboard');
 
-    // Categories
+
+    /*************  ✨ Categories ✨   *************/
+    /*******  Toutes les routes de catégories *******/
     Route::get('categories', [CategorieController::class, 'index'])->name('categories.index');
+    Route::get('categories/{categorie}', [CategorieController::class, 'show'])->name('categories.show');
 
-    // Etat Groupement
-    Route::get('etatgroupement', [EtatGroupementController::class, 'index'])->name('etatgroupement.index');
+    /*************  ✨ Etat Groupement ✨   *************/
+    /*******  Toutes les routes d'état de groupement *******/
+    Route::get('etatgroupement', [EtatGroupementController::class, 'index'])->name('etatgroupements.index');
+    Route::get('etatgroupement/{etatgroupement}', [EtatGroupementController::class, 'show'])->name('etatgroupements.show');
 
-    // Groupement
+    /*************  ✨ Groupement ✨   *************/
+    /*******  Toutes les routes de groupement *******/
     Route::get('groupements', [GroupementController::class, 'index'])->name('groupements.index');
+    Route::get('groupements/{groupement}', [GroupementController::class, 'show'])->name('groupements.show');
 
-    // Images
+    /*************  ✨ Images ✨   *************/
+    /*******  Toutes les routes d'images *******/
     Route::get('images_groupement', [ImageController::class, 'index'])->name('images_groupement.index');
+    Route::get('images_groupement/{image}', [ImageController::class, 'show'])->name('images_groupement.show');
 
-    // Logistiques
+    /*************  ✨ Logistique ✨   *************/
+    /*******  Toutes les routes de logistique *******/
     Route::get('logistiques', [LogistiqueController::class, 'index'])->name('logistiques.index');
+    Route::get('logistiques/{logistique}', [LogistiqueController::class, 'show'])->name('logistiques.show');
 
+    /*************  ✨ Pays ✨   *************/
+    /*******  Toutes les routes de pays *******/
     Route::get('pays', [PaysController::class, 'index'])->name('pays.index');
+    Route::get('pays/{pays}', [PaysController::class, 'show'])->name('pays.show');
 
-    // Participants
+    /*************  ✨ Participants ✨   *************/
+    /*******  Toutes les routes de participants *******/
     Route::get('participants', [ParticiperGroupementController::class, 'index'])->name('participants.index');
+    Route::get('participants/{participant}', [ParticiperGroupementController::class, 'show'])->name('participants.show');
 
-    // Propositions
+    /*************  ✨ Propositions ✨   *************/
+    /*******  Toutes les routes de propositions *******/
     Route::get('propositions', [PropositionController::class, 'index'])->name('propositions.index');
+    Route::get('propositions/{proposition}', [PropositionController::class, 'show'])->name('propositions.show');
 
-    // Roles
+    /*************  ✨ Roles ✨   *************/
+    /*******  Toutes les routes de rôles *******/
     Route::get('roles', [RoleController::class, 'index'])->name('roles.index');
-    
-    // Users
+    Route::get('roles/{role}', [RoleController::class, 'show'])->name('roles.show');
+
+    /*************  ✨ Users ✨   *************/
+    /*******  Toutes les routes d'utilisateurs *******/
     Route::get('users', [UserController::class, 'index'])->name('users.index');
+    Route::get('users/{user}', [UserController::class, 'show'])->name('users.show');
 
     // ################################ End Dashboard Routes ################################
 

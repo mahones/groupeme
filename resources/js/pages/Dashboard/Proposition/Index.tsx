@@ -4,19 +4,7 @@ import AppLayout from '@/layouts/app-layout';
 import { type BreadcrumbItem } from '@/types';
 import { Head, usePage } from '@inertiajs/react';
 import { Lightbulb, Pencil, Trash } from 'lucide-react';
-
-type Proposition = {
-    id: number;
-    titre: string;
-    lien_url_alibaba: string;
-    user_id: number;
-    user?: User;
-};
-
-type User = {
-    id: number;
-    name: string;
-};
+import { Proposition } from '@/types/Proposition';
 
 type PageProps = {
     propositions: Proposition[];
@@ -28,7 +16,7 @@ const breadcrumbs: BreadcrumbItem[] = [
     },
 ];
 
-export default function Proposition() {
+export default function Propositions() {
     const { propositions } = usePage<PageProps>().props;
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
@@ -58,13 +46,13 @@ export default function Proposition() {
                                 <TableCell>{proposition.user?.name}</TableCell>
                                 <TableCell className="flex justify-end text-right">
                                     <div className="flex justify-end gap-2">
-                                        <Button size="sm" className="bg-green-500 hover:bg-green-700">
+                                        <Button size="sm" className="bg-green-500 hover:bg-green-700 text-white hover:text-gray-300">
                                             <Lightbulb />
                                         </Button>
-                                        <Button size="sm" className="bg-red-500 hover:bg-red-700">
+                                        <Button size="sm" className="bg-red-500 hover:bg-red-700 text-white hover:text-gray-300">
                                             <Trash />
                                         </Button>
-                                        <Button size="sm" className="bg-blue-500 hover:bg-blue-700">
+                                        <Button size="sm" className="bg-blue-500 hover:bg-blue-700 text-white hover:text-gray-300">
                                             <Pencil />
                                         </Button>
                                     </div>

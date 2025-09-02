@@ -4,11 +4,7 @@ import AppLayout from '@/layouts/app-layout';
 import { type BreadcrumbItem } from '@/types';
 import { Head, usePage } from '@inertiajs/react';
 import { Lightbulb, Pencil, Trash } from 'lucide-react';
-
-type Logistique = {
-    id: string;
-    designation: string;
-};
+import { Logistique } from '@/types/Logistique';
 
 type PageProps = {
     logistiques: Logistique[];
@@ -47,13 +43,13 @@ export default function Logistiques() {
                                 <TableCell>{logistique.designation}</TableCell>
                                 <TableCell className="flex justify-end text-right">
                                     <div className="flex justify-end gap-2">
-                                        <Button size="sm" className="bg-green-500 hover:bg-green-700">
+                                        <Button size="sm" className="bg-green-500 hover:bg-green-700 text-white hover:text-gray-300">
                                             <Lightbulb />
                                         </Button>
-                                        <Button size="sm" className="bg-red-500 hover:bg-red-700">
+                                        <Button size="sm" className="bg-red-500 hover:bg-red-700 text-white hover:text-gray-300">
                                             <Trash />
                                         </Button>
-                                        <Button size="sm" className="bg-blue-500 hover:bg-blue-700">
+                                        <Button size="sm" className="bg-blue-500 hover:bg-blue-700 text-white hover:text-gray-300">
                                             <Pencil />
                                         </Button>
                                     </div>

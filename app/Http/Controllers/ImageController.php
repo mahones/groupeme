@@ -36,9 +36,12 @@ class ImageController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Image $image)
     {
-        //
+        $image_find = Image::find($image->id);
+        return inertia('Dashboard/ImageGroupement/Show', [
+            'image' => $image_find
+        ]);
     }
 
     /**

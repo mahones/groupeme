@@ -38,15 +38,18 @@ class EtatGroupementController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(EtatGroupement $etatgroupement)
     {
-        //
+        $etatgroupement_find = EtatGroupement::findOrFail($etatgroupement->id);
+        return Inertia::render('Dashboard/EtatGroupement/Show', [
+            'etatgroupement' => $etatgroupement_find,
+        ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(EtatGroupement $etatgroupement)
     {
         //
     }
@@ -54,7 +57,7 @@ class EtatGroupementController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, EtatGroupement $etatgroupement)
     {
         //
     }
@@ -62,7 +65,7 @@ class EtatGroupementController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(EtatGroupement $etatgroupement)
     {
         //
     }

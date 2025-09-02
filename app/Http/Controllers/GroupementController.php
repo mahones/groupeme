@@ -37,9 +37,12 @@ class GroupementController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Groupement $groupement)
     {
-        //
+        $groupement_find = Groupement::with(['categorie', 'logistique', 'pays', 'etatGroupement', 'images'])->find($groupement->id);
+        return inertia('Dashboard/Groupement/Show', [
+            'groupement' => $groupement_find
+        ]);
     }
 
     /**

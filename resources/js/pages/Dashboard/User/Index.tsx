@@ -5,19 +5,8 @@ import { type BreadcrumbItem } from '@/types';
 import { Head, usePage } from '@inertiajs/react';
 import { Lightbulb, Pencil, Trash } from 'lucide-react';
 
-type User = {
-    id: number;
-    telephone: string;
-    email: string;
-    name: string;
-    role_id: number;
-    role?: Role;
+import { User } from '@/types/User';
 
-};
-type Role = {
-    id: number;
-    designation: string;
-};
 type PageProps = {
     users: User[];
 };
@@ -61,13 +50,13 @@ export default function Users() {
                                 <TableCell>{user.role?.designation}</TableCell>
                                 <TableCell className="flex justify-end text-right">
                                     <div className="flex justify-end gap-2">
-                                        <Button size="sm" className="bg-green-500 hover:bg-green-700">
+                                        <Button size="sm" className="bg-green-500 hover:bg-green-700 text-white hover:text-gray-300">
                                             <Lightbulb />
                                         </Button>
-                                        <Button size="sm" className="bg-red-500 hover:bg-red-700">
+                                        <Button size="sm" className="bg-red-500 hover:bg-red-700 text-white hover:text-gray-300">
                                             <Trash />
                                         </Button>
-                                        <Button size="sm" className="bg-blue-500 hover:bg-blue-700">
+                                        <Button size="sm" className="bg-blue-500 hover:bg-blue-700 text-white hover:text-gray-300">
                                             <Pencil />
                                         </Button>
                                     </div>
