@@ -58,9 +58,11 @@ export default function Logistiques() {
                                                 <Lightbulb />
                                             </Button>
                                         </Link>
-                                        <Button size="sm" className="bg-blue-500 hover:bg-blue-700 text-white hover:text-gray-300">
-                                            <Pencil />
-                                        </Button>
+                                        <Link href={route('logistiques.edit', { id: logistique.id })}>
+                                            <Button size="sm" className="bg-blue-500 hover:bg-blue-700 text-white hover:text-gray-300">
+                                                <Pencil />
+                                            </Button>
+                                        </Link>
                                         <Button size="sm" className="bg-red-500 hover:bg-red-700 text-white hover:text-gray-300" onClick={() => handleDelete(logistique)}>
                                             <Trash />
                                         </Button>

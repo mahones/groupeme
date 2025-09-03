@@ -50,7 +50,9 @@ class ParticiperGroupementController extends Controller
      */
     public function edit(ParticiperGroupement $participant)
     {
-        //
+        return Inertia::render('Dashboard/Participants/Edit', [
+            'participant' => $participant
+        ]);
     }
 
     /**

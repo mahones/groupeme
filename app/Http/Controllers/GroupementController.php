@@ -50,7 +50,9 @@ class GroupementController extends Controller
      */
     public function edit(Groupement $groupement)
     {
-        //
+        return inertia('Dashboard/Groupement/Edit', [
+            'groupement' => $groupement
+        ]);
     }
 
     /**

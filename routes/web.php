@@ -32,7 +32,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     /*******  Toutes les routes de catégories *******/
     Route::get('categories', [CategorieController::class, 'index'])->name('categories.index');
     Route::get('categories/create', [CategorieController::class, 'create'])->name('categories.create');
-    Route::get('categories/{categorie}', [CategorieController::class, 'show'])->name('categories.show');
+    Route::get('categories/edit/{categorie}', [CategorieController::class, 'edit'])->name('categories.edit');
+    Route::get('categories/show/{categorie}', [CategorieController::class, 'show'])->name('categories.show');
     Route::delete('categories/{categorie}', [CategorieController::class, 'destroy'])->name('categorie.destroy');
     
 
@@ -40,7 +41,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     /*******  Toutes les routes d'état de groupement *******/
     Route::get('etatgroupement', [EtatGroupementController::class, 'index'])->name('etatgroupements.index');
     Route::get('etatgroupement/create', [EtatGroupementController::class, 'create'])->name('etatgroupements.create');
-    Route::get('etatgroupement/{etatgroupement}', [EtatGroupementController::class, 'show'])->name('etatgroupements.show');
+    Route::get('etatgroupement/edit/{etatgroupement}', [EtatGroupementController::class, 'edit'])->name('etatgroupements.edit');
+    Route::get('etatgroupement/show/{etatgroupement}', [EtatGroupementController::class, 'show'])->name('etatgroupements.show');
     Route::delete('etatgroupement/{etatgroupement}', [EtatGroupementController::class, 'destroy'])->name('etatgroupements.destroy');
     
 
@@ -48,7 +50,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     /*******  Toutes les routes de groupement *******/
     Route::get('groupements', [GroupementController::class, 'index'])->name('groupements.index');
     Route::get('groupements/create', [GroupementController::class, 'create'])->name('groupements.create');
-    Route::get('groupements/{groupement}', [GroupementController::class, 'show'])->name('groupements.show');
+    Route::get('groupements/edit/{groupement}', [GroupementController::class, 'edit'])->name('groupements.edit');
+    Route::get('groupements/show/{groupement}', [GroupementController::class, 'show'])->name('groupements.show');
     Route::delete('groupements/{groupement}', [GroupementController::class, 'destroy'])->name('groupements.destroy');
     
 
@@ -56,21 +59,24 @@ Route::middleware(['auth', 'verified'])->group(function () {
     /*******  Toutes les routes d'images *******/
     Route::get('images_groupement', [ImageController::class, 'index'])->name('images_groupement.index');
     Route::get('images_groupement/create', [ImageController::class, 'create'])->name('images_groupement.create');
-    Route::get('images_groupement/{image}', [ImageController::class, 'show'])->name('images_groupement.show');
+    Route::get('images_groupement/edit/{image}', [ImageController::class, 'edit'])->name('images_groupement.edit');
+    Route::get('images_groupement/show/{image}', [ImageController::class, 'show'])->name('images_groupement.show');
     Route::delete('images_groupement/{image}', [ImageController::class, 'destroy'])->name('images_groupement.destroy');
 
     /*************  ✨ Logistique ✨   *************/
     /*******  Toutes les routes de logistique *******/
     Route::get('logistiques', [LogistiqueController::class, 'index'])->name('logistiques.index');
     Route::get('logistiques/create', [LogistiqueController::class, 'create'])->name('logistiques.create');
-    Route::get('logistiques/{logistique}', [LogistiqueController::class, 'show'])->name('logistiques.show');
+    Route::get('logistiques/edit/{logistique}', [LogistiqueController::class, 'edit'])->name('logistiques.edit');
+    Route::get('logistiques/show/{logistique}', [LogistiqueController::class, 'show'])->name('logistiques.show');
     Route::delete('logistiques/{logistique}', [LogistiqueController::class, 'destroy'])->name('logistiques.destroy');
 
     /*************  ✨ Pays ✨   *************/
     /*******  Toutes les routes de pays *******/
     Route::get('pays', [PaysController::class, 'index'])->name('pays.index');
     Route::get('pays/create', [PaysController::class, 'create'])->name('pays.create');
-    Route::get('pays/{pays}', [PaysController::class, 'show'])->name('pays.show');
+    Route::get('pays/edit/{pays}', [PaysController::class, 'edit'])->name('pays.edit');
+    Route::get('pays/show/{pays}', [PaysController::class, 'show'])->name('pays.show');
     Route::delete('pays/{pays}', [PaysController::class, 'destroy'])->name('pays.destroy');
     
 
@@ -78,7 +84,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     /*******  Toutes les routes de participants *******/
     Route::get('participants', [ParticiperGroupementController::class, 'index'])->name('participants.index');
     Route::get('participants/create', [ParticiperGroupementController::class, 'create'])->name('participants.create');
-    Route::get('participants/{participant}', [ParticiperGroupementController::class, 'show'])->name('participants.show');
+    Route::get('participants/edit/{participant}', [ParticiperGroupementController::class, 'edit'])->name('participants.edit');
+    Route::get('participants/show/{participant}', [ParticiperGroupementController::class, 'show'])->name('participants.show');
     Route::delete('participants/{participant}', [ParticiperGroupementController::class, 'destroy'])->name('participants.destroy');
     
 
@@ -86,7 +93,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     /*******  Toutes les routes de propositions *******/
     Route::get('propositions', [PropositionController::class, 'index'])->name('propositions.index');
     Route::get('propositions/create', [PropositionController::class, 'create'])->name('propositions.create');
-    Route::get('propositions/{proposition}', [PropositionController::class, 'show'])->name('propositions.show');
+    Route::get('propositions/edit/{proposition}', [PropositionController::class, 'edit'])->name('propositions.edit');
+    Route::get('propositions/show/{proposition}', [PropositionController::class, 'show'])->name('propositions.show');
     Route::delete('propositions/{proposition}', [PropositionController::class, 'destroy'])->name('propositions.destroy');
     
 
@@ -94,7 +102,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     /*******  Toutes les routes de rôles *******/
     Route::get('roles', [RoleController::class, 'index'])->name('roles.index');
     Route::get('roles/create', [RoleController::class, 'create'])->name('roles.create');
-    Route::get('roles/{role}', [RoleController::class, 'show'])->name('roles.show');
+    Route::get('roles/edit/{role}', [RoleController::class, 'edit'])->name('roles.edit');
+    Route::get('roles/show/{role}', [RoleController::class, 'show'])->name('roles.show');
     Route::delete('roles/{role}', [RoleController::class, 'destroy'])->name('roles.destroy');
     
 
@@ -102,7 +111,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     /*******  Toutes les routes d'utilisateurs *******/
     Route::get('users', [UserController::class, 'index'])->name('users.index');
     Route::get('users/create', [UserController::class, 'create'])->name('users.create');
-    Route::get('users/{user}', [UserController::class, 'show'])->name('users.show');
+    Route::get('users/edit/{user}', [UserController::class, 'edit'])->name('users.edit');
+    Route::get('users/show/{user}', [UserController::class, 'show'])->name('users.show');
     Route::delete('users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
 
     // ################################ End Dashboard Routes ################################

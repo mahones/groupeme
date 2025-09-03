@@ -57,9 +57,11 @@ export default function EtatGroupements() {
                                                 <Lightbulb />
                                             </Button>
                                         </Link>
-                                        <Button size="sm" className="bg-blue-500 text-white hover:bg-blue-700 hover:text-gray-300">
-                                            <Pencil />
-                                        </Button>
+                                        <Link href={route('etatgroupements.edit', { id: etatGroupement.id })}>
+                                            <Button size="sm" className="bg-blue-500 text-white hover:bg-blue-700 hover:text-gray-300">
+                                                <Pencil />
+                                            </Button>
+                                        </Link>
                                         <Button
                                             size="sm"
                                             className="bg-red-500 text-white hover:bg-red-700 hover:text-gray-300"

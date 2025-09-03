@@ -31,7 +31,7 @@ const Show: React.FC = () => {
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Users" />
             <div className="m-4 flex justify-between">
-                <h1 className="text-2xl font-bold">Utilisateurs</h1>
+                <h1 className="text-2xl font-bold">Détail de l'utilisateur</h1>
                 <Button>Ajouter un utilisateur</Button>
             </div>
             <div className="p-4 shadow">

@@ -51,7 +51,9 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return Inertia::render('Dashboard/User/Edit', [
+            'user' => $user
+        ]);
     }
 
     /**

@@ -51,7 +51,9 @@ class PropositionController extends Controller
      */
     public function edit(Proposition $proposition)
     {
-        //
+        return Inertia::render('Dashboard/Proposition/Edit', [
+            'proposition' => $proposition
+        ]);
     }
 
     /**

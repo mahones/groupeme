@@ -51,7 +51,9 @@ class EtatGroupementController extends Controller
      */
     public function edit(EtatGroupement $etatgroupement)
     {
-        //
+        return Inertia::render('Dashboard/EtatGroupement/Edit', [
+            'etatgroupement' => $etatgroupement,
+        ]);
     }
 
     /**

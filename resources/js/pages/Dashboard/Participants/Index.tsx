@@ -64,9 +64,11 @@ export default function Participants() {
                                                 <Lightbulb />
                                             </Button>
                                         </Link>
-                                        <Button size="sm" className="bg-blue-500 text-white hover:bg-blue-700 hover:text-gray-300">
-                                            <Pencil />
-                                        </Button>
+                                        <Link href={route('participants.edit', { id: participant.id })}>
+                                            <Button size="sm" className="bg-blue-500 text-white hover:bg-blue-700 hover:text-gray-300">
+                                                <Pencil />
+                                            </Button>
+                                        </Link>
                                         <Button
                                             size="sm"
                                             className="bg-red-500 text-white hover:bg-red-700 hover:text-gray-300"

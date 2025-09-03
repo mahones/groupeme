@@ -51,7 +51,9 @@ class RoleController extends Controller
      */
     public function edit(Role $role)
     {
-        //
+        return Inertia::render('Dashboard/Role/Edit', [
+            'role' => $role
+        ]);
     }
 
     /**

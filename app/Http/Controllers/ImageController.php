@@ -49,7 +49,9 @@ class ImageController extends Controller
      */
     public function edit(Image $image)
     {
-        //
+        return inertia('Dashboard/ImageGroupement/Edit', [
+            'image' => $image
+        ]);
     }
 
     /**

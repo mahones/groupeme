@@ -51,7 +51,9 @@ class PaysController extends Controller
      */
     public function edit(Pays $pays)
     {
-        //
+        return Inertia::render('Dashboard/Pays/Edit', [
+            'pays' => $pays
+        ]);
     }
 
     /**

@@ -53,7 +53,9 @@ class CategorieController extends Controller
      */
     public function edit(Categorie $categorie)
     {
-        //
+        return Inertia::render('Dashboard/Categorie/Edit', [
+            'categorie' => $categorie,
+        ]);
     }
 
     /**

@@ -30,7 +30,7 @@ export default function Participants() {
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Participants" />
             <div className="m-4 flex justify-between">
-                <h1 className="text-2xl font-bold">Participants</h1>
+                <h1 className="text-2xl font-bold">Détails du participant</h1>
             </div>
             <div className="p-4 shadow">
                 <h2 className="mb-2 text-xl font-semibold">{participant.groupement?.titre}</h2>

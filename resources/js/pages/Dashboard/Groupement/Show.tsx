@@ -32,7 +32,7 @@ const Show: React.FC = () => {
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Groupements" />
             <div className="m-4 flex justify-between">
-                <h1 className="text-2xl font-bold">Groupements</h1>
+                <h1 className="text-2xl font-bold">Détails du groupement</h1>
                 <Button>Ajouter un groupement</Button>
             </div>
             <div className="p-4 shadow">

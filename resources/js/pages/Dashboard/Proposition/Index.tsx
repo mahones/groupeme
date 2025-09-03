@@ -62,9 +62,11 @@ export default function Propositions() {
                                                 <Lightbulb />
                                             </Button>
                                         </Link>
-                                        <Button size="sm" className="bg-blue-500 text-white hover:bg-blue-700 hover:text-gray-300">
-                                            <Pencil />
-                                        </Button>
+                                        <Link href={route('propositions.edit', { id: proposition.id })}>
+                                            <Button size="sm" className="bg-blue-500 text-white hover:bg-blue-700 hover:text-gray-300">
+                                                <Pencil />
+                                            </Button>
+                                        </Link>
                                         <Button size="sm" className="bg-red-500 text-white hover:bg-red-700 hover:text-gray-300" onClick={() => handleDelete(proposition)}>
                                             <Trash />
                                         </Button>

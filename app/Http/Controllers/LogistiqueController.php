@@ -51,7 +51,9 @@ class LogistiqueController extends Controller
      */
     public function edit(Logistique $logistique)
     {
-        //
+        return Inertia::render('Dashboard/Logistique/Edit', [
+            'logistique' => $logistique
+        ]);
     }
 
     /**

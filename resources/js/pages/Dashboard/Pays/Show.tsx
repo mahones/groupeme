@@ -31,7 +31,7 @@ const Show: React.FC = () => {
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Pays" />
             <div className="m-4 flex justify-between">
-                <h1 className="text-2xl font-bold">Pays</h1>
+                <h1 className="text-2xl font-bold">Détail du pays</h1>
                 <Button>Ajouter un pays</Button>
             </div>
             <div className="p-4 shadow">

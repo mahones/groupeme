@@ -29,7 +29,7 @@ const Show: React.FC = () => {
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Proposition" />
             <div className="m-4 flex justify-between">
-                <h1 className="text-2xl font-bold">Proposition</h1>
+                <h1 className="text-2xl font-bold">Détail de la proposition</h1>
                 <Button>Ajouter une proposition</Button>
             </div>
             <div className="p-4 shadow">

@@ -30,7 +30,7 @@ export default function Logistiques() {
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Logistiques" />
             <div className="m-4 flex justify-between">
-                <h1 className="text-2xl font-bold">Logistique</h1>
+                <h1 className="text-2xl font-bold">Détails de la logistique</h1>
                 <Button>Ajouter une logistique</Button>
             </div>
 

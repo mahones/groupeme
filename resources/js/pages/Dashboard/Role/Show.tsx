@@ -29,7 +29,7 @@ const Show: React.FC = () => {
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Roles" />
             <div className="m-4 flex justify-between">
-                <h1 className="text-2xl font-bold">Rôles</h1>
+                <h1 className="text-2xl font-bold">Détail du rôle</h1>
                 <Button>Ajouter un rôle</Button>
             </div>
             <div className="p-4 shadow">
