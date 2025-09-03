@@ -49,7 +49,7 @@ class LogistiqueController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Logistique $logistique)
     {
         //
     }
@@ -57,7 +57,7 @@ class LogistiqueController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Logistique $logistique)
     {
         //
     }
@@ -65,8 +65,9 @@ class LogistiqueController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Logistique $logistique)
     {
-        //
+        $logistique->delete();
+        return redirect()->route('logistiques.index')->with('success', 'Logistique supprimée avec succès.');
     }
 }

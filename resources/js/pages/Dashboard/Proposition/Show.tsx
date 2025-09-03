@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button';
 import AppLayout from '@/layouts/app-layout';
 import { type BreadcrumbItem } from '@/types';
+import {router as Inertia} from '@inertiajs/react';
 import { Proposition } from '@/types/Proposition';
 import { Head, usePage } from '@inertiajs/react';
 import { Pencil, Trash } from 'lucide-react';
@@ -17,6 +18,13 @@ const breadcrumbs: BreadcrumbItem[] = [
 
 const Show: React.FC = () => {
     const { proposition } = usePage<ShowProps>().props;
+    const handleDelete = (proposition: Proposition) => {
+            if (confirm('Supprimer cette proposition ?')) {
+                Inertia.delete(route('propositions.destroy', proposition.id), {
+                    preserveScroll: true,
+                });
+            }
+        };
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Proposition" />
@@ -42,7 +50,7 @@ const Show: React.FC = () => {
                     <Button size="sm" className="bg-blue-500 text-white hover:bg-blue-700 hover:text-gray-300">
                         <Pencil /> Modifier
                     </Button>
-                    <Button size="sm" className="bg-red-500 text-white hover:bg-red-700 hover:text-gray-300">
+                    <Button size="sm" className="bg-red-500 text-white hover:bg-red-700 hover:text-gray-300" onClick={() => handleDelete(proposition)}>
                         <Trash /> Supprimer
                     </Button>
                 </div>

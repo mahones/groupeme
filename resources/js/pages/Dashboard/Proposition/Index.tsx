@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import AppLayout from '@/layouts/app-layout';
+import {router as Inertia} from '@inertiajs/react';
 import { type BreadcrumbItem } from '@/types';
 import { Proposition } from '@/types/Proposition';
 import { Head, Link, usePage } from '@inertiajs/react';
@@ -18,6 +19,14 @@ const breadcrumbs: BreadcrumbItem[] = [
 
 export default function Propositions() {
     const { propositions } = usePage<PageProps>().props;
+
+    const handleDelete = (proposition: Proposition) => {
+        if (confirm('Supprimer cette proposition ?')) {
+            Inertia.delete(route('propositions.destroy', proposition.id), {
+                preserveScroll: true,
+            });
+        }
+    };
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Proposition" />
@@ -51,12 +60,11 @@ export default function Propositions() {
                                                 <Lightbulb />
                                             </Button>
                                         </Link>
-
-                                        <Button size="sm" className="bg-red-500 text-white hover:bg-red-700 hover:text-gray-300">
-                                            <Trash />
-                                        </Button>
                                         <Button size="sm" className="bg-blue-500 text-white hover:bg-blue-700 hover:text-gray-300">
                                             <Pencil />
+                                        </Button>
+                                        <Button size="sm" className="bg-red-500 text-white hover:bg-red-700 hover:text-gray-300" onClick={() => handleDelete(proposition)}>
+                                            <Trash />
                                         </Button>
                                     </div>
                                 </TableCell>

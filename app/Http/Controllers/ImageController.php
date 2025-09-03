@@ -47,7 +47,7 @@ class ImageController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Image $image)
     {
         //
     }
@@ -55,7 +55,7 @@ class ImageController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Image $image)
     {
         //
     }
@@ -63,8 +63,9 @@ class ImageController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Image $image)
     {
-        //
+        $image->delete();
+        return redirect()->route('images_groupement.index')->with('success', 'Image supprimée avec succès.');
     }
 }

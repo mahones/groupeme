@@ -48,7 +48,7 @@ class PropositionController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Proposition $proposition)
     {
         //
     }
@@ -56,7 +56,7 @@ class PropositionController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Proposition $proposition)
     {
         //
     }
@@ -64,8 +64,9 @@ class PropositionController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Proposition $proposition)
     {
-        //
+        $proposition->delete();
+        return redirect()->route('propositions.index')->with('success', 'Proposition supprimée avec succès.');
     }
 }

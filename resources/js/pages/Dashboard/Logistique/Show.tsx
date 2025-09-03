@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button';
 import AppLayout from '@/layouts/app-layout';
 import { type BreadcrumbItem } from '@/types';
+import {router as Inertia} from '@inertiajs/react';
 import { Logistique } from '@/types/Logistique';
 import { Head, usePage } from '@inertiajs/react';
 import { Pencil, Trash } from 'lucide-react';
@@ -18,6 +19,13 @@ const breadcrumbs: BreadcrumbItem[] = [
 
 export default function Logistiques() {
     const { logistique } = usePage<ShowProps>().props;
+    const handleDelete = (logistique: Logistique) => {
+            if (confirm('Supprimer cette logistique ?')) {
+                Inertia.delete(route('logistiques.destroy', logistique.id), {
+                    preserveScroll: true,
+                });
+            }
+        };
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Logistiques" />
@@ -39,7 +47,7 @@ export default function Logistiques() {
                     <Button size="sm" className="bg-blue-500 text-white hover:bg-blue-700 hover:text-gray-300">
                         <Pencil /> Modifier
                     </Button>
-                    <Button size="sm" className="bg-red-500 text-white hover:bg-red-700 hover:text-gray-300">
+                    <Button size="sm" className="bg-red-500 text-white hover:bg-red-700 hover:text-gray-300" onClick={() => handleDelete(logistique)}>
                         <Trash /> Supprimer
                     </Button>
                 </div>

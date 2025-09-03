@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import AppLayout from '@/layouts/app-layout';
 import { type BreadcrumbItem } from '@/types';
 import { Participant } from '@/types/Participant';
-import { Head, Link, usePage } from '@inertiajs/react';
+import { Head, router as Inertia, Link, usePage } from '@inertiajs/react';
 import { Lightbulb, Pencil, Trash } from 'lucide-react';
 
 type PageProps = {
@@ -20,6 +20,13 @@ const breadcrumbs: BreadcrumbItem[] = [
 
 export default function Participants() {
     const { participants } = usePage<PageProps>().props;
+    const handleDelete = (participant: Participant) => {
+        if (confirm('Supprimer ce participant ?')) {
+            Inertia.delete(route('participants.destroy', participant.id), {
+                preserveScroll: true,
+            });
+        }
+    };
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Participants" />
@@ -54,12 +61,15 @@ export default function Participants() {
                                                 <Lightbulb />
                                             </Button>
                                         </Link>
-
-                                        <Button size="sm" className="bg-red-500 text-white hover:bg-red-700 hover:text-gray-300">
-                                            <Trash />
-                                        </Button>
                                         <Button size="sm" className="bg-blue-500 text-white hover:bg-blue-700 hover:text-gray-300">
                                             <Pencil />
+                                        </Button>
+                                        <Button
+                                            size="sm"
+                                            className="bg-red-500 text-white hover:bg-red-700 hover:text-gray-300"
+                                            onClick={() => handleDelete(participant)}
+                                        >
+                                            <Trash />
                                         </Button>
                                     </div>
                                 </TableCell>

@@ -48,7 +48,7 @@ class GroupementController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Groupement $groupement)
     {
         //
     }
@@ -56,7 +56,7 @@ class GroupementController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Groupement $groupement)
     {
         //
     }
@@ -64,8 +64,9 @@ class GroupementController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Groupement $groupement)
     {
-        //
+        $groupement->delete();
+        return redirect()->route('groupements.index')->with('success', 'Groupement supprimé avec succès.');
     }
 }

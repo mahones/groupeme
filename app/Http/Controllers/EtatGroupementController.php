@@ -67,6 +67,7 @@ class EtatGroupementController extends Controller
      */
     public function destroy(EtatGroupement $etatgroupement)
     {
-        //
+        $etatgroupement->delete();
+        return redirect()->route('etatgroupements.index')->with('success', 'État de groupement supprimé avec succès.');
     }
 }

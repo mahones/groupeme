@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import AppLayout from '@/layouts/app-layout';
+import { router as Inertia } from '@inertiajs/react';
 import { type BreadcrumbItem } from '@/types';
 import { Link, Head, usePage } from '@inertiajs/react';
 import { Lightbulb, Pencil, Trash } from 'lucide-react';
@@ -18,6 +19,13 @@ const breadcrumbs: BreadcrumbItem[] = [
 
 export default function Pays() {
     const { pays } = usePage<PageProps>().props;
+    const handleDelete = (pays: TypePays) => {
+        if (confirm('Supprimer ce pays ?')) {
+            Inertia.delete(route('pays.destroy', pays.id), {
+                preserveScroll: true,
+            });
+        }
+    };
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Pays" />
@@ -52,12 +60,13 @@ export default function Pays() {
                                         <Lightbulb />
                                     </Button>
                                 </Link>
-                                <Button size="sm" className="bg-red-500 hover:bg-red-700 text-white hover:text-gray-300">
-                                    <Trash />
-                                </Button>
                                 <Button size="sm" className="bg-blue-500 hover:bg-blue-700 text-white hover:text-gray-300">
                                     <Pencil />
                                 </Button>
+                                <Button size="sm" className="bg-red-500 hover:bg-red-700 text-white hover:text-gray-300" onClick={() => handleDelete(pays)}>
+                                    <Trash />
+                                </Button>
+                                
                             </div>
                         </TableCell>
                     </TableRow>

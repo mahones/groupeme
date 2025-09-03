@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import AppLayout from '@/layouts/app-layout';
+import {router as Inertia} from '@inertiajs/react';
 import { type BreadcrumbItem } from '@/types';
 import { Head, Link, usePage } from '@inertiajs/react';
 import { Lightbulb, Pencil, Trash } from 'lucide-react';
@@ -20,6 +21,13 @@ const breadcrumbs: BreadcrumbItem[] = [
 
 export default function Users() {
     const { users } = usePage<PageProps>().props;
+    const handleDelete = (user: User) => {
+        if (confirm('Supprimer cet utilisateur ?')) {
+            Inertia.delete(route('users.destroy', user.id), {
+                preserveScroll: true,
+            });
+        }
+    };
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Users" />
@@ -55,12 +63,11 @@ export default function Users() {
                                                 <Lightbulb />
                                             </Button>
                                         </Link>
-
-                                        <Button size="sm" className="bg-red-500 text-white hover:bg-red-700 hover:text-gray-300">
-                                            <Trash />
-                                        </Button>
                                         <Button size="sm" className="bg-blue-500 text-white hover:bg-blue-700 hover:text-gray-300">
                                             <Pencil />
+                                        </Button>
+                                        <Button size="sm" className="bg-red-500 text-white hover:bg-red-700 hover:text-gray-300" onClick={() => handleDelete(user)}>
+                                            <Trash />
                                         </Button>
                                     </div>
                                 </TableCell>

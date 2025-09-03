@@ -49,7 +49,7 @@ class PaysController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Pays $pays)
     {
         //
     }
@@ -57,7 +57,7 @@ class PaysController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Pays $pays)
     {
         //
     }
@@ -65,8 +65,9 @@ class PaysController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Pays $pays)
     {
-        //
+        $pays->delete();
+        return redirect()->route('pays.index')->with('success', 'Pays supprimé avec succès.');
     }
 }

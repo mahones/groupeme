@@ -3,7 +3,7 @@ import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, Tabl
 import AppLayout from '@/layouts/app-layout';
 import { type BreadcrumbItem } from '@/types';
 import { Categorie } from '@/types/Categorie';
-import { Head, Link, usePage } from '@inertiajs/react';
+import { Head, router as Inertia, Link, usePage } from '@inertiajs/react';
 import { Lightbulb, Pencil, Trash } from 'lucide-react';
 
 //définir le type pour les props de la page
@@ -20,6 +20,20 @@ const breadcrumbs: BreadcrumbItem[] = [
 
 export default function Categories() {
     const { categories } = usePage<PageProps>().props;
+    // const handlDelete = (categorie: Categorie) => {
+    //     if (confirm('Supprimer cette catégorie ?')) {
+    //         Inertia.delete(route('categorie.destroy', categorie.id), {
+    //             preserveScroll: true,
+    //         });
+    //     }
+    // };
+    const handleDelete = (categorie: Categorie) => {
+        if (confirm('Supprimer cette catégorie ?')) {
+            Inertia.delete(route('categorie.destroy', categorie.id), {
+                preserveScroll: true,
+            });
+        }
+    };
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Categories" />
@@ -47,16 +61,19 @@ export default function Categories() {
                                 <TableCell className="text-right">
                                     <div className="flex justify-end gap-2">
                                         <Link href={route('categories.show', { id: categorie.id })}>
-                                            <Button size="sm" className="bg-green-500 hover:bg-green-700 text-white hover:text-gray-300">
+                                            <Button size="sm" className="bg-green-500 text-white hover:bg-green-700 hover:text-gray-300">
                                                 <Lightbulb />
                                             </Button>
                                         </Link>
-
-                                        <Button size="sm" className="bg-red-500 hover:bg-red-700 text-white hover:text-gray-300">
-                                            <Trash />
-                                        </Button>
-                                        <Button size="sm" className="bg-blue-500 hover:bg-blue-700 text-white hover:text-gray-300">
+                                        <Button size="sm" className="bg-blue-500 text-white hover:bg-blue-700 hover:text-gray-300">
                                             <Pencil />
+                                        </Button>
+                                        <Button
+                                            size="sm"
+                                            className="bg-red-500 text-white hover:bg-red-700 hover:text-gray-300"
+                                            onClick={() => handleDelete(categorie)}
+                                        >
+                                            <Trash />
                                         </Button>
                                     </div>
                                 </TableCell>

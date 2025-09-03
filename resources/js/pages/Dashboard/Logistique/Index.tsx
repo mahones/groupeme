@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import AppLayout from '@/layouts/app-layout';
+import {router as Inertia} from '@inertiajs/react';
 import { type BreadcrumbItem } from '@/types';
 import { Link, Head, usePage } from '@inertiajs/react';
 import { Lightbulb, Pencil, Trash } from 'lucide-react';
@@ -19,6 +20,13 @@ const breadcrumbs: BreadcrumbItem[] = [
 
 export default function Logistiques() {
     const { logistiques } = usePage<PageProps>().props;
+    const handleDelete = (logistique: Logistique) => {
+        if (confirm('Supprimer cette logistique ?')) {
+            Inertia.delete(route('logistiques.destroy', logistique.id), {
+                preserveScroll: true,
+            });
+        }
+    };
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Logistiques" />
@@ -48,12 +56,13 @@ export default function Logistiques() {
                                                 <Lightbulb />
                                             </Button>
                                         </Link>
-                                        <Button size="sm" className="bg-red-500 hover:bg-red-700 text-white hover:text-gray-300">
-                                            <Trash />
-                                        </Button>
                                         <Button size="sm" className="bg-blue-500 hover:bg-blue-700 text-white hover:text-gray-300">
                                             <Pencil />
                                         </Button>
+                                        <Button size="sm" className="bg-red-500 hover:bg-red-700 text-white hover:text-gray-300" onClick={() => handleDelete(logistique)}>
+                                            <Trash />
+                                        </Button>
+                                        
                                     </div>
                                 </TableCell>
                             </TableRow>

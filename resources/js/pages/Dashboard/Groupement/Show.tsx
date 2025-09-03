@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import AppLayout from '@/layouts/app-layout';
+import {router as Inertia} from '@inertiajs/react';
 import { type BreadcrumbItem } from '@/types';
 import { Groupement } from '@/types/Groupement';
 import { Head, usePage } from '@inertiajs/react';
@@ -20,6 +21,13 @@ const breadcrumbs: BreadcrumbItem[] = [
 const Show: React.FC = () => {
     const { groupement } = usePage<ShowProps>().props;
     const images = groupement.images ?? [];
+    const handleDelete = (groupement: Groupement) =>{
+            if(confirm('Supprimer ce groupement ?')){
+                Inertia.delete(route('groupements.destroy', groupement.id), {
+                    preserveScroll: true,
+                });
+            }
+        }
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Groupements" />
@@ -64,7 +72,7 @@ const Show: React.FC = () => {
                     <Button size="sm" className="bg-blue-500 text-white hover:bg-blue-700 hover:text-gray-300">
                         <Pencil /> Modifier
                     </Button>
-                    <Button size="sm" className="bg-red-500 text-white hover:bg-red-700 hover:text-gray-300">
+                    <Button size="sm" className="bg-red-500 text-white hover:bg-red-700 hover:text-gray-300" onClick={() => handleDelete(groupement)}>
                         <Trash /> Supprimer
                     </Button>
                 </div>

@@ -48,7 +48,7 @@ class ParticiperGroupementController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(ParticiperGroupement $participant)
     {
         //
     }
@@ -56,7 +56,7 @@ class ParticiperGroupementController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, ParticiperGroupement $participant)
     {
         //
     }
@@ -64,8 +64,9 @@ class ParticiperGroupementController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(ParticiperGroupement $participant)
     {
-        //
+        $participant->delete();
+        return redirect()->route('participants.index')->with('success', 'Participant supprimé avec succès.');
     }
 }
