@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Proposition;
+use Inertia\Inertia;
 
 class PropositionController extends Controller
 {
@@ -13,7 +14,7 @@ class PropositionController extends Controller
     public function index()
     {
         $propositions = Proposition::with('user')->get();
-        return inertia('Dashboard/Proposition/Index', [
+        return Inertia::render('Dashboard/Proposition/Index', [
             'propositions' => $propositions
         ]);
     }
@@ -23,7 +24,7 @@ class PropositionController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('Dashboard/Proposition/Create');
     }
 
     /**
@@ -40,7 +41,7 @@ class PropositionController extends Controller
     public function show(Proposition $proposition)
     {
         $proposition_find = Proposition::with('user')->find($proposition->id)   ;
-        return inertia('Dashboard/Proposition/Show', [
+        return Inertia::render('Dashboard/Proposition/Show', [
             'proposition' => $proposition_find
         ]);
     }

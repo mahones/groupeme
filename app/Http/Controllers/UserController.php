@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Inertia\Inertia;
 
 class UserController extends Controller
 {
@@ -13,7 +14,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::with('role')->get();
-        return inertia('Dashboard/User/Index', [
+        return Inertia::render('Dashboard/User/Index', [
             'users' => $users
         ]);
     }
@@ -23,7 +24,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('Dashboard/User/Create');
     }
 
     /**
@@ -40,7 +41,7 @@ class UserController extends Controller
     public function show(User $user)
     {
         $user_find = User::with('role')->find($user->id);
-        return inertia('Dashboard/User/Show', [
+        return Inertia::render('Dashboard/User/Show', [
             'user' => $user_find
         ]);
     }

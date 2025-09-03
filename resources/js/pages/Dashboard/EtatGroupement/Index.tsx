@@ -31,7 +31,9 @@ export default function EtatGroupements() {
             <Head title="Etat Groupement" />
             <div className="m-4 flex justify-between">
                 <h1 className="text-2xl font-bold">Etat</h1>
-                <Button>Ajouter un état</Button>
+                <Link href={route('etatgroupements.create')}>
+                    <Button>Ajouter un état</Button>
+                </Link>
             </div>
             <Table>
                 <TableCaption>Liste des Etat Groupement.</TableCaption>

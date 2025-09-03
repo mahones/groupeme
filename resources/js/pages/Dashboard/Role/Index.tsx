@@ -33,7 +33,9 @@ export default function Roles() {
             <Head title="Roles" />
             <div className="m-4 flex justify-between">
                 <h1 className="text-2xl font-bold">Rôles</h1>
-                <Button>Ajouter un rôle</Button>
+                <Link href={route('roles.create')}>
+                    <Button>Ajouter un rôle</Button>
+                </Link>
             </div>
             <Table>
                 <TableCaption>Liste des rôles.</TableCaption>

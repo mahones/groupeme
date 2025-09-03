@@ -24,7 +24,7 @@ class EtatGroupementController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('Dashboard/EtatGroupement/Create');
     }
 
     /**

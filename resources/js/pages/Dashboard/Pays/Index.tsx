@@ -31,7 +31,9 @@ export default function Pays() {
             <Head title="Pays" />
             <div className="m-4 flex justify-between">
                 <h1 className="text-2xl font-bold">Pays</h1>
-                <Button>Ajouter un pays</Button>
+                <Link href={route('pays.create')}>
+                    <Button>Ajouter un pays</Button>
+                </Link>
             </div>
             <Table>
                 <TableCaption>Liste de tous les pays.</TableCaption>

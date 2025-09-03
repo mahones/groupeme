@@ -24,7 +24,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('Dashboard/Role/Create');
     }
 
     /**

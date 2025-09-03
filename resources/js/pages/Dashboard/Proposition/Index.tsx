@@ -32,7 +32,9 @@ export default function Propositions() {
             <Head title="Proposition" />
             <div className="m-4 flex justify-between">
                 <h1 className="text-2xl font-bold">Proposition</h1>
-                <Button>Ajouter une proposition</Button>
+                <Link href={route('propositions.create')}>
+                    <Button>Ajouter une proposition</Button>
+                </Link>
             </div>
             <Table>
                 <TableCaption>Liste de tous les pays.</TableCaption>

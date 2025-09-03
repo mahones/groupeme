@@ -32,7 +32,9 @@ export default function Images() {
             <Head title="Images" />
             <div className="m-4 flex justify-between">
                 <h1 className="text-2xl font-bold">Image</h1>
-                <Button>Ajouter une image</Button>
+                <Link href={route('images_groupement.create')}>
+                    <Button>Ajouter une image</Button>
+                </Link>
             </div>
             <Table>
                 <TableCaption>Liste des Images.</TableCaption>

@@ -39,7 +39,9 @@ export default function Categories() {
             <Head title="Categories" />
             <div className="m-4 flex justify-between">
                 <h1 className="text-2xl font-bold">Categories</h1>
-                <Button>Ajouter une catégorie</Button>
+                <Link href={route('categories.create')}>
+                    <Button>Ajouter une catégorie</Button>
+                </Link>
             </div>
             <Table>
                 <TableCaption>Liste des Catégorie.</TableCaption>

@@ -23,7 +23,7 @@ class ParticiperGroupementController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('Dashboard/Participants/Create');
     }
 
     /**

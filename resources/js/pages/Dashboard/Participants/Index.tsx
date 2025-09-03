@@ -32,6 +32,9 @@ export default function Participants() {
             <Head title="Participants" />
             <div className="m-4 flex justify-between">
                 <h1 className="text-2xl font-bold">Participants</h1>
+                <Link href={route('participants.create')}>
+                    <Button>Ajouter un participant</Button>
+                </Link>
             </div>
             <Table>
                 <TableCaption>Liste de tous les participants.</TableCaption>

@@ -32,7 +32,9 @@ export default function Logistiques() {
             <Head title="Logistiques" />
             <div className="m-4 flex justify-between">
                 <h1 className="text-2xl font-bold">Logistique</h1>
-                <Button>Ajouter une logistique</Button>
+                <Link href={route('logistiques.create')}>
+                    <Button>Ajouter une logistique</Button>
+                </Link>
             </div>
             <Table>
                 <TableCaption>Liste des Logistiques.</TableCaption>

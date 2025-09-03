@@ -23,7 +23,7 @@ class GroupementController extends Controller
      */
     public function create()
     {
-        //
+        return inertia('Dashboard/Groupement/Create');
     }
 
     /**

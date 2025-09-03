@@ -26,7 +26,7 @@ class CategorieController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('Dashboard/Categorie/Create');
     }
 
     /**

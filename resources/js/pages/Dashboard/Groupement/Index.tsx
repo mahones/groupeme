@@ -31,7 +31,9 @@ export default function Groupements() {
             <Head title="Groupements" />
             <div className="m-4 flex justify-between">
                 <h1 className="text-2xl font-bold">Groupements</h1>
-                <Button>Ajouter un groupement</Button>
+                <Link href={route('groupements.create')}>
+                    <Button>Ajouter un groupement</Button>
+                </Link>
             </div>
             <Table>
                 <TableCaption>Liste des Groupements.</TableCaption>

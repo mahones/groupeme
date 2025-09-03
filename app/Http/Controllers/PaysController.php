@@ -24,7 +24,7 @@ class PaysController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('Dashboard/Pays/Create');
     }
 
     /**

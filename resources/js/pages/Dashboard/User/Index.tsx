@@ -33,7 +33,9 @@ export default function Users() {
             <Head title="Users" />
             <div className="m-4 flex justify-between">
                 <h1 className="text-2xl font-bold">Utilisateurs</h1>
-                <Button>Ajouter un utilisateur</Button>
+                <Link href={route('users.create')}>
+                    <Button>Ajouter un utilisateur</Button>
+                </Link>
             </div>
             <Table>
                 <TableCaption>Liste de tous les utilisateurs.</TableCaption>

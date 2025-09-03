@@ -22,7 +22,7 @@ class ImageController extends Controller
      */
     public function create()
     {
-        //
+        return inertia('Dashboard/ImageGroupement/Create');
     }
 
     /**
