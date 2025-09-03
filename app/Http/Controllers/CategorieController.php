@@ -26,7 +26,10 @@ class CategorieController extends Controller
      */
     public function create()
     {
-        return Inertia::render('Dashboard/Categorie/Create');
+        $categories = Categorie::all();
+        return Inertia::render('Dashboard/Categorie/Create', [
+            'categories' => $categories,
+        ]);
     }
 
     /**
