@@ -41,11 +41,14 @@ export default function Create() {
                                 <Input
                                     value={data.designation}
                                     onChange={(e) => setData('designation', e.target.value)}
-                                    placeholder="Titre de l'état de groupement"
+                                    placeholder="Nom du pays"
                                 />
                             </div>
-
-                            <Textarea value="Description de la catégorie" onChange={() => {}} placeholder="Description de la catégorie" />
+                            <Textarea
+                                value={data.designation}
+                                onChange={(e) => setData('designation', e.target.value)}
+                                placeholder="Description du pays"
+                            />
                         </div>
                         <div className="w-full p-4 md:w-[30%]">
                             <div className="flex justify-end gap-2">

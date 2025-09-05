@@ -1,11 +1,11 @@
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
 import AppLayout from '@/layouts/app-layout';
 import { type BreadcrumbItem } from '@/types';
 import { Head, useForm } from '@inertiajs/react';
 import { Save, Trash } from 'lucide-react';
 import React from 'react';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -40,11 +40,14 @@ export default function Create() {
                                 <Input
                                     value={data.designation}
                                     onChange={(e) => setData('designation', e.target.value)}
-                                    placeholder="Titre de l'état de groupement"
+                                    placeholder="Titre du role"
                                 />
                             </div>
-
-                            <Textarea value="Description de la catégorie" onChange={() => {}} placeholder="Description de la catégorie" />
+                            <Textarea
+                                value={data.designation}
+                                onChange={(e) => setData('designation', e.target.value)}
+                                placeholder="Description du role"
+                            />
                         </div>
                         <div className="w-full p-4 md:w-[30%]">
                             <div className="flex justify-end gap-2">

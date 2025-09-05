@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Groupement;
+use App\Models\Categorie;
+use App\Models\Logistique;
+use App\Models\Pays;
+use App\Models\EtatGroupement;
 
 class GroupementController extends Controller
 {
@@ -23,7 +27,16 @@ class GroupementController extends Controller
      */
     public function create()
     {
-        return inertia('Dashboard/Groupement/Create');
+        $categories = Categorie::all();
+        $logistiques = Logistique::all();
+        $pays = Pays::all();
+        $etats = EtatGroupement::all();
+        return inertia('Dashboard/Groupement/Create', [
+            'categories' => $categories,
+            'logistiques' => $logistiques,
+            'pays' => $pays,
+            'etats' => $etats,
+        ]);
     }
 
     /**

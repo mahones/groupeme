@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Image;
+use App\Models\Groupement;
+use Inertia\Inertia;
 class ImageController extends Controller
 {
     /**
@@ -12,7 +14,7 @@ class ImageController extends Controller
     public function index()
     {
         $images = Image::with(['groupement'])->get();
-        return inertia('Dashboard/ImageGroupement/Index', [
+        return Inertia::render('Dashboard/ImageGroupement/Index', [
             'images' => $images
         ]);
     }
@@ -22,7 +24,10 @@ class ImageController extends Controller
      */
     public function create()
     {
-        return inertia('Dashboard/ImageGroupement/Create');
+        $groupements = Groupement::all();
+        return Inertia::render('Dashboard/ImageGroupement/Create', [
+            'groupements' => $groupements
+        ]);
     }
 
     /**
@@ -39,7 +44,7 @@ class ImageController extends Controller
     public function show(Image $image)
     {
         $image_find = Image::find($image->id);
-        return inertia('Dashboard/ImageGroupement/Show', [
+        return Inertia::render('Dashboard/ImageGroupement/Show', [
             'image' => $image_find
         ]);
     }
@@ -49,7 +54,7 @@ class ImageController extends Controller
      */
     public function edit(Image $image)
     {
-        return inertia('Dashboard/ImageGroupement/Edit', [
+        return Inertia::render('Dashboard/ImageGroupement/Edit', [
             'image' => $image
         ]);
     }

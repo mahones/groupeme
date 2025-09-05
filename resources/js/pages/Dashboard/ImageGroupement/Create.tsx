@@ -1,12 +1,18 @@
 import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import AppLayout from '@/layouts/app-layout';
 import { type BreadcrumbItem } from '@/types';
-import { Head, useForm } from '@inertiajs/react';
-import {  Trash, Save  } from 'lucide-react';
+import { Groupement } from '@/types/Groupement';
+import { Head, useForm, usePage } from '@inertiajs/react';
+import { Save, Trash } from 'lucide-react';
 import React from 'react';
-import { Textarea } from '@/components/ui/textarea';
-import { Input } from '@/components/ui/input';
 
+//définir le type pour les props de la page
+type PageProps = {
+    groupements: Groupement[];
+};
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -16,10 +22,9 @@ const breadcrumbs: BreadcrumbItem[] = [
 ];
 
 export default function Create() {
-
+    const { groupements } = usePage<PageProps>().props;
     const { data, setData, post } = useForm({
         designation: '',
-        description: '',
     });
 
     const handleSubmit = (e: React.FormEvent) => {
@@ -37,17 +42,45 @@ export default function Create() {
                 <h2 className="mb-2 text-xl font-semibold"></h2>
 
                 <form onSubmit={handleSubmit}>
-<div className="flex flex-col gap-4 md:flex-row">
+                    <div className="flex flex-col gap-4 md:flex-row">
                         <div className="flex w-full flex-col gap-4 p-4 md:w-[70%]">
                             <div className="flex justify-between">
+                                <Select>
+                                    <SelectTrigger className="w-[49%]">
+                                        <SelectValue placeholder="Groupement" />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        {groupements && groupements.length > 0 ? (
+                                            groupements.map((groupement) => (
+                                                <SelectItem key={groupement.id} value={String(groupement.id)}>
+                                                    {groupement.titre}
+                                                </SelectItem>
+                                            ))
+                                        ) : (
+                                            <SelectItem value="Aucun pays disponible" disabled>
+                                                Aucun pays disponible
+                                            </SelectItem>
+                                        )}
+                                    </SelectContent>
+                                </Select>
                                 <Input
+                                    id="picture"
+                                    type="file"
+                                    className="w-[49%]"
                                     value={data.designation}
                                     onChange={(e) => setData('designation', e.target.value)}
                                     placeholder="Titre de l'état de groupement"
                                 />
                             </div>
+                            <div className="flex flex-wrap justify-between gap-2">
+                                {Array.from({ length: 6 }).map((_, i) => (
+                                    <Card key={i} className="w-[30%]">
+                                        <img src="/images/pays/icons8-benin-100.png" alt={`Preview ${i + 1}`} className="h-32 w-full object-cover" />
+                                    </Card>
+                                ))}
+                            </div>
 
-                            <Textarea value="Description de la catégorie" onChange={() => {}} placeholder="Description de la catégorie" />
+                            <div className="flex justify-between"></div>
                         </div>
                         <div className="w-full p-4 md:w-[30%]">
                             <div className="flex justify-end gap-2">
@@ -64,5 +97,4 @@ export default function Create() {
             </div>
         </AppLayout>
     );
-};
-
+}

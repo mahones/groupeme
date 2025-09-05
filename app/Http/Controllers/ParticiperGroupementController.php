@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\ParticiperGroupement;
+use App\Models\Groupement;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 class ParticiperGroupementController extends Controller
@@ -23,7 +25,12 @@ class ParticiperGroupementController extends Controller
      */
     public function create()
     {
-        return Inertia::render('Dashboard/Participants/Create');
+        $groupements = Groupement::all();
+        $users = User::all();
+        return Inertia::render('Dashboard/Participants/Create', [
+            'groupements' => $groupements,
+            'users' => $users   
+        ]);
     }
 
     /**
