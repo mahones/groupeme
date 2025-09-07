@@ -38,6 +38,11 @@ class User extends Authenticatable
         return $this->hasMany(Proposition::class, 'user_id');
     }
 
+    public function groupements()
+    {
+        return $this->hasMany(Groupement::class, 'user_id');
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

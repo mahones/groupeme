@@ -29,22 +29,25 @@ const Show: React.FC = () => {
         };
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
-            <Head title={categorie.designation || 'Catégorie'} />
+            <Head title={categorie.titre || 'Catégorie'} />
             <div className="m-4 flex justify-between">
                 <h1 className="text-2xl font-bold">Détails de la catégorie</h1>
                 <Button>Ajouter une catégorie</Button>
             </div>
             <div className="p-4 shadow">
-                <h2 className="mb-2 text-xl font-semibold">{categorie.designation}</h2>
+                <h2 className="mb-2 text-xl font-semibold">{categorie.titre}</h2>
 
                 <p>
                     <strong>ID :</strong> {categorie.id}
                 </p>
                 <p>
-                    <strong>Nom de la catégorie :</strong> {categorie.designation}
+                    <strong>Nom de la catégorie :</strong> {categorie.titre}
                 </p>
                 <p>
-                    <strong>Catégorie parent :</strong> {categorie.parent ? categorie.parent.designation : 'Aucune'}
+                    <strong>Nom de la catégorie :</strong> {categorie.description}
+                </p>
+                <p>
+                    <strong>Catégorie parent :</strong> {categorie.parent ? categorie.parent.titre : 'Aucune'}
                 </p>
 
                 <div className="flex justify-end gap-2">

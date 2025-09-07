@@ -33,12 +33,15 @@ const Show: React.FC = () => {
                 <Button>Ajouter un rôle</Button>
             </div>
             <div className="p-4 shadow">
-                <h2 className="mb-2 text-xl font-semibold">{role.designation}</h2>
+                <h2 className="mb-2 text-xl font-semibold">{role.titre}</h2>
                 <p>
                     <strong>ID :</strong> {role.id}
                 </p>
                 <p>
-                    <strong>Titre :</strong> {role.designation}
+                    <strong>Titre :</strong> {role.titre}
+                </p>
+                <p>
+                    <strong>Titre :</strong> {role.description}
                 </p>
                 <div className="flex justify-end gap-2">
                     <Button size="sm" className="bg-blue-500 text-white hover:bg-blue-700 hover:text-gray-300">

@@ -6,6 +6,7 @@ use App\Models\EtatGroupement;
 use App\Models\Groupement;
 use App\Models\Logistique;
 use App\Models\Pays;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class GroupementFactory extends Factory
@@ -23,6 +24,7 @@ class GroupementFactory extends Factory
             'logistique_id' => Logistique::inRandomOrder()->first()->id,
             'pays_id' => Pays::inRandomOrder()->first()->id,
             'etat_groupement_id' => EtatGroupement::inRandomOrder()->first()->id,
+            'user_id' => User::inRandomOrder()->first()->id,
             'date_cloture' => $this->faker->date(),
         ];
     }

@@ -3,11 +3,11 @@ import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import AppLayout from '@/layouts/app-layout';
 import { type BreadcrumbItem } from '@/types';
+import { Groupement } from '@/types/Groupement';
+import { User } from '@/types/User';
 import { Head, useForm, usePage } from '@inertiajs/react';
 import { Save, Trash } from 'lucide-react';
 import React from 'react';
-import { User } from '@/types/User';
-import { Groupement } from '@/types/Groupement';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -23,7 +23,10 @@ type PageProps = {
 export default function Create() {
     const { groupements, users } = usePage<PageProps>().props;
     const { data, setData, post } = useForm({
-        designation: '',
+        groupement_id: '',
+        user_id: '',
+        montant: '',
+        statut: 'En attente',
     });
 
     const handleSubmit = (e: React.FormEvent) => {
@@ -45,8 +48,8 @@ export default function Create() {
                         <div className="flex w-full flex-col gap-4 p-4 md:w-[70%]">
                             <div className="flex justify-between">
                                 <Select>
-                                    <SelectTrigger className="w-[32%]">
-                                        <SelectValue placeholder="Pays" />
+                                    <SelectTrigger className="w-[49%]">
+                                        <SelectValue placeholder="Goupements" />
                                     </SelectTrigger>
                                     <SelectContent>
                                         {groupements && groupements.length > 0 ? (
@@ -63,8 +66,8 @@ export default function Create() {
                                     </SelectContent>
                                 </Select>
                                 <Select>
-                                    <SelectTrigger className="w-[32%]">
-                                        <SelectValue placeholder="Etat de groupement" />
+                                    <SelectTrigger className="w-[49%]">
+                                        <SelectValue placeholder="Utilistateur" />
                                     </SelectTrigger>
                                     <SelectContent>
                                         {users && users.length > 0 ? (
@@ -80,7 +83,20 @@ export default function Create() {
                                         )}
                                     </SelectContent>
                                 </Select>
-                                <Input value={data.designation} onChange={(e) => setData('designation', e.target.value)} placeholder="Montant" />
+                            </div>
+                            <div className="flex justify-between">
+                                <Input
+                                    className="w-[49%]"
+                                    value={data.montant}
+                                    onChange={(e) => setData('montant', e.target.value)}
+                                    placeholder="Montant"
+                                />
+                                {/* <Input
+                                    className="w-[49%]"
+                                    value={data.montant}
+                                    onChange={(e) => setData('montant', e.target.value)}
+                                    placeholder="Montant"
+                                /> */}
                             </div>
                         </div>
                         <div className="w-full p-4 md:w-[30%]">

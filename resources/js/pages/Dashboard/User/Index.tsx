@@ -57,7 +57,7 @@ export default function Users() {
                                 <TableCell>{user.name}</TableCell>
                                 <TableCell>{user.telephone}</TableCell>
                                 <TableCell>{user.email}</TableCell>
-                                <TableCell>{user.role?.designation}</TableCell>
+                                <TableCell>{user.role?.titre}</TableCell>
                                 <TableCell className="flex justify-end text-right">
                                     <div className="flex justify-end gap-2">
                                         <Link href={route('users.show', user.id)}>

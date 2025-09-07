@@ -43,7 +43,7 @@ const Show: React.FC = () => {
                     <strong>Nom :</strong> {user.name}
                 </p>
                 <p>
-                    <strong>Rôle :</strong> {user.role?.designation}
+                    <strong>Rôle :</strong> {user.role?.titre}
                 </p>
                 <p>
                     <strong>Email :</strong> {user.email}

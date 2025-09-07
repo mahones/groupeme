@@ -17,6 +17,7 @@ class Groupement extends Model
         'logistique_id',
         'pays_id',
         'etat_groupement_id',
+        'user_id',
         'date_cloture'
     ];
 
@@ -45,4 +46,8 @@ class Groupement extends Model
         return $this->hasMany(ParticiperGroupement::class);
         
     }
+    public function iscreatedby()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    } 
 }

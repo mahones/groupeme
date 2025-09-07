@@ -15,7 +15,8 @@ class CategorieFactory extends Factory
             $parentId = Categorie::inRandomOrder()->first()->id;
         }
         return [
-            'designation' => $this->faker->word,
+            'titre' => $this->faker->word,
+            'description' => $this->faker->word,
             'parent_id' => $parentId,
         ];
     }

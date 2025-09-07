@@ -57,7 +57,7 @@ export default function Groupements() {
                                 <TableCell>{groupement.prix}</TableCell>
                                 <TableCell>{groupement.minimum_participant}</TableCell>
                                 <TableCell>{groupement.pays?.nom}</TableCell>
-                                <TableCell>{groupement.categorie?.designation}</TableCell>
+                                <TableCell>{groupement.categorie?.titre}</TableCell>
                                 <TableCell className="flex justify-end text-right">
                                     <div className="flex justify-end gap-2">
                                         <Link href={route('groupements.show', { id: groupement.id })}>

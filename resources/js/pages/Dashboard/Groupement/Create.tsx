@@ -29,7 +29,7 @@ type PageProps = {
 };
 
 export default function Create() {
-    const { categories, logistiques, pays, etats } = usePage<PageProps>().props;
+    const { categories, logistiques, pays, etats, auth } = usePage<PageProps & { auth: { user: { id: number } } }>().props;
     const [open, setOpen] = React.useState(false);
     const [date, setDate] = React.useState<Date | undefined>(undefined);
     const { data, setData, post } = useForm({
@@ -42,6 +42,7 @@ export default function Create() {
         pays_id: '',
         etat_groupement_id: '',
         date_cloture: '',
+        user_id: auth.user.id, // Ajoute l'ID de l'utilisateur authentifié
     });
 
     const handleSubmit = (e: React.FormEvent) => {
@@ -83,7 +84,7 @@ export default function Create() {
                                     className="w-[32%]"
                                 />
 
-                                <Select>
+                                <Select value={data.categorie_id} onValueChange={(value) => setData('categorie_id', value)} >
                                     <SelectTrigger className="w-[32%]">
                                         <SelectValue placeholder="Catégorie" />
                                     </SelectTrigger>
@@ -91,7 +92,7 @@ export default function Create() {
                                         {categories && categories.length > 0 ? (
                                             categories.map((categorie) => (
                                                 <SelectItem key={categorie.id} value={String(categorie.id)}>
-                                                    {categorie.designation}
+                                                    {categorie.titre}
                                                 </SelectItem>
                                             ))
                                         ) : (
@@ -101,7 +102,7 @@ export default function Create() {
                                         )}
                                     </SelectContent>
                                 </Select>
-                                <Select>
+                                <Select value={data.logistique_id} onValueChange={(value) => setData('logistique_id', value)}>
                                     <SelectTrigger className="w-[32%]">
                                         <SelectValue placeholder="Moyen de transport" />
                                     </SelectTrigger>
@@ -109,7 +110,7 @@ export default function Create() {
                                         {logistiques && logistiques.length > 0 ? (
                                             logistiques.map((logistique) => (
                                                 <SelectItem key={logistique.id} value={String(logistique.id)}>
-                                                    {logistique.designation}
+                                                    {logistique.titre}
                                                 </SelectItem>
                                             ))
                                         ) : (
@@ -122,7 +123,7 @@ export default function Create() {
                             </div>
 
                             <div className="flex justify-between">
-                                <Select>
+                                <Select value={data.pays_id} onValueChange={(value) => setData('pays_id', value)}>
                                     <SelectTrigger className="w-[32%]">
                                         <SelectValue placeholder="Pays" />
                                     </SelectTrigger>
@@ -140,7 +141,7 @@ export default function Create() {
                                         )}
                                     </SelectContent>
                                 </Select>
-                                <Select>
+                                <Select value={data.etat_groupement_id} onValueChange={(value) => setData('etat_groupement_id', value)}>
                                     <SelectTrigger className="w-[32%]">
                                         <SelectValue placeholder="Etat de groupement" />
                                     </SelectTrigger>
@@ -148,7 +149,7 @@ export default function Create() {
                                         {etats && etats.length > 0 ? (
                                             etats.map((etat) => (
                                                 <SelectItem key={etat.id} value={String(etat.id)}>
-                                                    {etat.designation}
+                                                    {etat.titre}
                                                 </SelectItem>
                                             ))
                                         ) : (

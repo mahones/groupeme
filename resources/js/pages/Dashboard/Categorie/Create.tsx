@@ -21,8 +21,10 @@ const breadcrumbs: BreadcrumbItem[] = [
 export default function Create() {
     const { categories } = usePage<PageProps>().props;
 
-    const { data, setData, post } = useForm({
-        designation: '',
+    const { data, setData, post } = useForm<{ titre: string; description: string; parent_id: number | null }>({
+        titre: '',
+        description: '',
+        parent_id: null,
     });
 
     const handleSubmit = (e: React.FormEvent) => {
@@ -42,16 +44,16 @@ export default function Create() {
                     <div className="flex flex-col gap-4 md:flex-row">
                         <div className="flex w-full flex-col gap-4 p-4 md:w-[70%]">
                             <div className="flex justify-between">
-                                <Input value={data.designation} onChange={(e) => setData('designation', e.target.value)} placeholder="Titre de la catégorie" className="w-[49%]" />
-                                <Select>
+                                <Input value={data.titre} onChange={(e) => setData('titre', e.target.value)} placeholder="Titre de la catégorie" className="w-[49%]" />
+                                <Select value={data.parent_id ? String(data.parent_id) : ''} onValueChange={(value) => setData('parent_id', value ? Number(value) : null)}>
                                     <SelectTrigger className="w-[49%]">
                                         <SelectValue placeholder="Catégorie parente" />
                                     </SelectTrigger>
                                     <SelectContent>
                                         {categories && categories.length > 0 ? (
                                             categories.map((category) => (
-                                                <SelectItem key={category.id} value={category.designation}>
-                                                    {category.designation}
+                                                <SelectItem key={category.id} value={category.id ? String(category.id) : ''}>
+                                                    {category.titre}
                                                 </SelectItem>
                                             ))
                                         ) : (
@@ -63,7 +65,7 @@ export default function Create() {
                                 </Select>
                             </div>
 
-                            <Textarea value="Description de la catégorie" onChange={() => {}} placeholder="Description de la catégorie" />
+                            <Textarea value={data.description} onChange={(e) => setData('description', e.target.value)} placeholder="Description de la catégorie" />
                         </div>
                         <div className="w-full p-4 md:w-[30%]">
                             <div className="flex justify-end gap-2">

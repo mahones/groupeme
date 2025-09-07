@@ -41,6 +41,7 @@ export default function EtatGroupements() {
                     <TableRow>
                         <TableHead className="w-[100px]">N°</TableHead>
                         <TableHead>Titre</TableHead>
+                        <TableHead>Description</TableHead>
                         <TableHead className="text-right">Actions</TableHead>
                     </TableRow>
                 </TableHeader>
@@ -49,7 +50,8 @@ export default function EtatGroupements() {
                         etatGroupements.map((etatGroupement) => (
                             <TableRow key={etatGroupement.id}>
                                 <TableCell className="font-medium">{etatGroupement.id}</TableCell>
-                                <TableCell>{etatGroupement.designation}</TableCell>
+                                <TableCell>{etatGroupement.titre}</TableCell>
+                                <TableCell>{etatGroupement.description}</TableCell>
                                 <TableCell className="flex justify-end">
                                     <div className="flex justify-end gap-2">
                                         <Link href={route('etatgroupements.show', etatGroupement.id)}>

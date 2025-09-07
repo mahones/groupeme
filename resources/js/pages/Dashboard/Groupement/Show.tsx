@@ -57,16 +57,16 @@ const Show: React.FC = () => {
                     <strong>ID :</strong> {groupement.id}
                 </p>
                 <p>
-                    <strong>Catégorie :</strong> {groupement.categorie?.designation}
+                    <strong>Catégorie :</strong> {groupement.categorie?.titre}
                 </p>
                 <p>
-                    <strong>Transport :</strong> {groupement.logistique?.designation}
+                    <strong>Transport :</strong> {groupement.logistique?.titre}
                 </p>
                 <p>
                     <strong>Pays :</strong> {groupement.pays?.nom} {groupement.pays?.lien_icon}
                 </p>
                 <p>
-                    <strong>Etat de groupement :</strong> {groupement.etat_groupement?.designation}
+                    <strong>Etat de groupement :</strong> {groupement.etat_groupement?.titre}
                 </p>
                 <div className="flex justify-end gap-2">
                     <Button size="sm" className="bg-blue-500 text-white hover:bg-blue-700 hover:text-gray-300">

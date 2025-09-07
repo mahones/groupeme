@@ -49,6 +49,7 @@ export default function Categories() {
                     <TableRow>
                         <TableHead className="w-[100px]">N°</TableHead>
                         <TableHead>Titre</TableHead>
+                        <TableHead>Description</TableHead>
                         <TableHead>Catégorie parent</TableHead>
                         <TableHead className="text-right">Actions</TableHead>
                     </TableRow>
@@ -58,8 +59,9 @@ export default function Categories() {
                         categories.map((categorie) => (
                             <TableRow key={categorie.id}>
                                 <TableCell className="font-medium">{categorie.id}</TableCell>
-                                <TableCell>{categorie.designation}</TableCell>
-                                <TableCell>{categorie.parent ? categorie.parent.designation : 'N/A'}</TableCell>
+                                <TableCell>{categorie.titre}</TableCell>
+                                <TableCell>{categorie.description}</TableCell>
+                                <TableCell>{categorie.parent ? categorie.parent.titre : 'N/A'}</TableCell>
                                 <TableCell className="text-right">
                                     <div className="flex justify-end gap-2">
                                         <Link href={route('categories.show', { id: categorie.id })}>

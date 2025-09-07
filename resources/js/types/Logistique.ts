@@ -1,4 +1,5 @@
 export type Logistique = {
     id: number;
-    designation: string;
+    titre:string;
+    description: string;
 };

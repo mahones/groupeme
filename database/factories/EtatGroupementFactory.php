@@ -10,7 +10,8 @@ class EtatGroupementFactory extends Factory
     public function definition()
     {
         return [
-            'designation' => $this->faker->word,
+            'titre' => $this->faker->word,
+            'description' => $this->faker->word,
         ];
     }
 }

@@ -42,6 +42,7 @@ export default function Logistiques() {
                     <TableRow>
                         <TableHead className="w-[100px]">N°</TableHead>
                         <TableHead>Titre</TableHead>
+                        <TableHead>Description</TableHead>
                         <TableHead className="text-right">Actions</TableHead>
                     </TableRow>
                 </TableHeader>
@@ -50,7 +51,8 @@ export default function Logistiques() {
                         logistiques.map((logistique) => (
                             <TableRow key={logistique.id}>
                                 <TableCell className="font-medium">{logistique.id}</TableCell>
-                                <TableCell>{logistique.designation}</TableCell>
+                                <TableCell>{logistique.titre}</TableCell>
+                                <TableCell>{logistique.description}</TableCell>
                                 <TableCell className="flex justify-end text-right">
                                     <div className="flex justify-end gap-2">
                                         <Link href={route('logistiques.show', logistique.id)}>

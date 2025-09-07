@@ -1,4 +1,5 @@
 export type EtatGroupement = {
     id: number;
-    designation: string;
+    titre:string;
+    description: string;
 };

@@ -1,9 +1,10 @@
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import AppLayout from '@/layouts/app-layout';
 import { type BreadcrumbItem } from '@/types';
-import { Head, useForm } from '@inertiajs/react';
+import { Role } from '@/types/Role';
+import { Head, useForm, usePage } from '@inertiajs/react';
 import { Save, Trash } from 'lucide-react';
 import React from 'react';
 
@@ -14,9 +15,18 @@ const breadcrumbs: BreadcrumbItem[] = [
     },
 ];
 
+type PageProps = {
+    roles: Role[];
+};
+
 export default function Create() {
+    const { roles } = usePage<PageProps>().props;
     const { data, setData, post } = useForm({
-        designation: '',
+        name: '',
+        telephone: '',
+        email: '',
+        password: '',
+        role_id: '',
     });
 
     const handleSubmit = (e: React.FormEvent) => {
@@ -38,13 +48,45 @@ export default function Create() {
                         <div className="flex w-full flex-col gap-4 p-4 md:w-[70%]">
                             <div className="flex justify-between">
                                 <Input
-                                    value={data.designation}
-                                    onChange={(e) => setData('designation', e.target.value)}
-                                    placeholder="Titre de l'état de groupement"
+                                    className="w-[49%]"
+                                    value={data.name}
+                                    onChange={(e) => setData('name', e.target.value)}
+                                    placeholder="Nom"
+                                />
+                                <Input
+                                    className="w-[49%]"
+                                    value={data.telephone}
+                                    onChange={(e) => setData('telephone', e.target.value)}
+                                    placeholder="Téléphone"
                                 />
                             </div>
-
-                            <Textarea value="Description de la catégorie" onChange={() => {}} placeholder="Description de la catégorie" />
+                            <div className="flex justify-between">
+                                <Input
+                                    className="w-[49%]"
+                                    type="email"
+                                    value={data.email}
+                                    onChange={(e) => setData('email', e.target.value)}
+                                    placeholder="Email"
+                                />
+                                <Select value={data.role_id} onValueChange={(value) => setData('role_id', value)}>
+                                    <SelectTrigger className="w-[49%]">
+                                        <SelectValue placeholder="Role" />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        {roles && roles.length > 0 ? (
+                                            roles.map((role) => (
+                                                <SelectItem key={role.id} value={String(role.id)}>
+                                                    {role.titre}
+                                                </SelectItem>
+                                            ))
+                                        ) : (
+                                            <SelectItem value="Aucune catégorie disponible" disabled>
+                                                Aucune catégorie disponible
+                                            </SelectItem>
+                                        )}
+                                    </SelectContent>
+                                </Select>
+                            </div>
                         </div>
                         <div className="w-full p-4 md:w-[30%]">
                             <div className="flex justify-end gap-2">

@@ -35,13 +35,16 @@ const Show: React.FC = () => {
                 <Button>Ajouter un état</Button>
             </div>
             <div className="p-4 shadow">
-                <h2 className="mb-2 text-xl font-semibold">{etatgroupement.designation}</h2>
+                <h2 className="mb-2 text-xl font-semibold">{etatgroupement.titre}</h2>
 
                 <p>
                     <strong>ID :</strong> {etatgroupement.id}
                 </p>
                 <p>
-                    <strong>Nom de l'Etat' :</strong> {etatgroupement.designation}
+                    <strong>Titre :</strong> {etatgroupement.titre}
+                </p>
+                <p>
+                    <strong>Description de l'état :</strong> {etatgroupement.description}
                 </p>
 
                 <div className="flex justify-end gap-2">

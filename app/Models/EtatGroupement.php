@@ -9,7 +9,8 @@ class EtatGroupement extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'designation'
+        'titre',
+        'description'
     ];
 
     public function groupements()
