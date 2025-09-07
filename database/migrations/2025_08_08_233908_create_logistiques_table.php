@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('logistiques', function (Blueprint $table) {
             $table->id();
-            $table->string('designation');
+            $table->string('titre');
+            $table->string('description');
             $table->timestamps();
         });
     }

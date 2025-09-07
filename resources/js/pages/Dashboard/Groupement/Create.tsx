@@ -91,7 +91,7 @@ export default function Create() {
                                         {categories && categories.length > 0 ? (
                                             categories.map((categorie) => (
                                                 <SelectItem key={categorie.id} value={String(categorie.id)}>
-                                                    {categorie.designation}
+                                                    {categorie.titre}
                                                 </SelectItem>
                                             ))
                                         ) : (
@@ -109,7 +109,7 @@ export default function Create() {
                                         {logistiques && logistiques.length > 0 ? (
                                             logistiques.map((logistique) => (
                                                 <SelectItem key={logistique.id} value={String(logistique.id)}>
-                                                    {logistique.designation}
+                                                    {logistique.titre}
                                                 </SelectItem>
                                             ))
                                         ) : (
@@ -148,7 +148,7 @@ export default function Create() {
                                         {etats && etats.length > 0 ? (
                                             etats.map((etat) => (
                                                 <SelectItem key={etat.id} value={String(etat.id)}>
-                                                    {etat.designation}
+                                                    {etat.titre}
                                                 </SelectItem>
                                             ))
                                         ) : (

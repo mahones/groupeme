@@ -51,7 +51,7 @@ export default function Roles() {
                         roles.map((role) => (
                             <TableRow key={role.id}>
                                 <TableCell className="font-medium">{role.id}</TableCell>
-                                <TableCell>{role.designation}</TableCell>
+                                <TableCell>{role.titre}</TableCell>
                                 <TableCell className="flex justify-end text-right">
                                     <div className="flex justify-end gap-2">
                                         <Link href={route('roles.show', role.id)}>

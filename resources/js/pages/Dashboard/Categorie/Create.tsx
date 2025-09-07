@@ -50,8 +50,8 @@ export default function Create() {
                                     <SelectContent>
                                         {categories && categories.length > 0 ? (
                                             categories.map((category) => (
-                                                <SelectItem key={category.id} value={category.designation}>
-                                                    {category.designation}
+                                                <SelectItem key={category.id} value={category.titre}>
+                                                    {category.titre}
                                                 </SelectItem>
                                             ))
                                         ) : (

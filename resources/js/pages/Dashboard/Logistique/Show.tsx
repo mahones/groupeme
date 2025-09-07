@@ -35,12 +35,15 @@ export default function Logistiques() {
             </div>
 
             <div className="p-4 shadow">
-                <h2 className="mb-2 text-xl font-semibold">{logistique.designation}</h2>
+                <h2 className="mb-2 text-xl font-semibold">{logistique.titre}</h2>
                  <p>
                     <strong>ID :</strong> {logistique.id}
                 </p>
                 <p>
-                    <strong>Moyen de transport :</strong> {logistique.designation}
+                    <strong>Moyen de transport :</strong> {logistique.titre}
+                </p>
+                <p>
+                    <strong>Moyen de transport :</strong> {logistique.description}
                 </p>
 
                 <div className="flex justify-end gap-2">

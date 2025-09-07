@@ -1,4 +1,5 @@
 export type Role = {
     id: number;
-    designation: string;
+    titre:string;
+    description: string;
 };

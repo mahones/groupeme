@@ -21,6 +21,7 @@ return new class extends Migration
             $table->foreignId('logistique_id')->constrained()->onDelete('cascade');
             $table->foreignId('pays_id')->constrained()->onDelete('cascade');
             $table->foreignId('etat_groupement_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->date('date_cloture');
             $table->timestamps();
         });

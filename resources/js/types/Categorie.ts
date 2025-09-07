@@ -1,6 +1,7 @@
 export type Categorie = {
     id: number;
-    designation: string;
+    titre:string;
+    description: string;
     parent_id?: number;
     parent?: Categorie;
 };
