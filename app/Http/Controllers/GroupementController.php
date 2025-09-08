@@ -48,7 +48,9 @@ class GroupementController extends Controller
 
         // je dois revoir cette partie
         $validated = $request->validated();
+        $groupement['user_id'] = auth()->id();
         $groupement = Groupement::create($validated);
+        
 
         if ($request->hasFile('image_url')) {
             foreach ($request->file('image_url') as $image) {

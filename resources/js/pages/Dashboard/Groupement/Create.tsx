@@ -41,6 +41,7 @@ export default function Create() {
         logistique_id: '',
         pays_id: '',
         etat_groupement_id: '',
+        user_id: '',
         date_cloture: '',
     });
 
@@ -162,7 +163,7 @@ export default function Create() {
                                 <Popover open={open} onOpenChange={setOpen}>
                                     <PopoverTrigger asChild>
                                         <Button variant="outline" id="date" className="w-[32%] justify-between font-normal">
-                                            {date ? date.toLocaleDateString() : 'Select date'}
+                                            {date ? date.toLocaleDateString() : 'Ajouter la date'}
                                             <ChevronDownIcon />
                                         </Button>
                                     </PopoverTrigger>
@@ -173,6 +174,7 @@ export default function Create() {
                                             captionLayout="dropdown"
                                             onSelect={(date) => {
                                                 setDate(date);
+                                                setData('date_cloture', date ? date.toISOString().slice(0, 10) : '');
                                                 setOpen(false);
                                             }}
                                             className="w-72"
