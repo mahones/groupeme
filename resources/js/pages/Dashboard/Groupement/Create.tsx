@@ -29,7 +29,7 @@ type PageProps = {
 };
 
 export default function Create() {
-    const { categories, logistiques, pays, etats, auth } = usePage<PageProps & { auth: { user: { id: number } } }>().props;
+    const { categories, logistiques, pays, etats } = usePage<PageProps>().props;
     const [open, setOpen] = React.useState(false);
     const [date, setDate] = React.useState<Date | undefined>(undefined);
     const { data, setData, post } = useForm({
@@ -42,7 +42,6 @@ export default function Create() {
         pays_id: '',
         etat_groupement_id: '',
         date_cloture: '',
-        user_id: auth.user.id, // Ajoute l'ID de l'utilisateur authentifié
     });
 
     const handleSubmit = (e: React.FormEvent) => {
@@ -84,7 +83,7 @@ export default function Create() {
                                     className="w-[32%]"
                                 />
 
-                                <Select value={data.categorie_id} onValueChange={(value) => setData('categorie_id', value)} >
+                                <Select value={data.categorie_id} onValueChange={(value) => setData('categorie_id', value)}>
                                     <SelectTrigger className="w-[32%]">
                                         <SelectValue placeholder="Catégorie" />
                                     </SelectTrigger>
@@ -181,8 +180,8 @@ export default function Create() {
                                     </PopoverContent>
                                 </Popover>
                             </div>
-                            
-                            <Input id="picture" type="file" />
+
+                            <Input id="picture" type="file" name='image_url[]' multiple />
                             <Textarea
                                 value={data.description}
                                 onChange={(e) => setData('description', e.target.value)}

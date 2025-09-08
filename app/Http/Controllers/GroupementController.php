@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Admin\StoreGroupementRequest;
 use Illuminate\Http\Request;
 use App\Models\Groupement;
 use App\Models\Categorie;
@@ -42,9 +43,24 @@ class GroupementController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreGroupementRequest $request)
     {
-        //
+
+        // je dois revoir cette partie
+        $validated = $request->validated();
+        $groupement = Groupement::create($validated);
+
+        if ($request->hasFile('image_url')) {
+            foreach ($request->file('image_url') as $image) {
+                $path = $image->store('images', 'public');
+                $groupement->images()->create([
+                    'image_url' => $path,
+                    'groupement_id' => $groupement->id,
+                ]);
+            }
+        }
+
+        return redirect()->route('groupements.index')->with('success', 'Groupement créé avec succès.');
     }
 
     /**

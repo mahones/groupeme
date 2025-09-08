@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Admin\StoreCategorieRequest;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\Categorie;
@@ -35,9 +36,11 @@ class CategorieController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreCategorieRequest $request)
     {
-        //
+        $validated = $request->validated();
+        Categorie::create($validated);
+        return redirect()->route('categories.index')->with('success', 'Catégorie créée avec succès.');
     }
 
     /**

@@ -3,7 +3,7 @@ import AppLayout from '@/layouts/app-layout';
 import {router as Inertia} from '@inertiajs/react'; 
 import { type BreadcrumbItem } from '@/types';
 import { Role } from '@/types/Role';
-import { Head, usePage } from '@inertiajs/react';
+import { Head, Link, usePage } from '@inertiajs/react';
 import { Pencil, Trash } from 'lucide-react';
 
 type PageProps = {
@@ -44,9 +44,12 @@ const Show: React.FC = () => {
                     <strong>Titre :</strong> {role.description}
                 </p>
                 <div className="flex justify-end gap-2">
+                    <Link href={route('roles.edit', role.id)}>
                     <Button size="sm" className="bg-blue-500 text-white hover:bg-blue-700 hover:text-gray-300">
                         <Pencil /> Modifier
                     </Button>
+                    </Link>
+                    
                     <Button size="sm" className="bg-red-500 text-white hover:bg-red-700 hover:text-gray-300" onClick={() => handleDelete(role)}>
                         <Trash /> Supprimer
                     </Button>

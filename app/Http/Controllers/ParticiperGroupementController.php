@@ -14,7 +14,7 @@ class ParticiperGroupementController extends Controller
      */
     public function index()
     {
-        $participants = ParticiperGroupement::with('user', 'groupement')->get();
+        $participants = ParticiperGroupement::with('user', 'groupement.etatGroupement')->get();
         return Inertia::render('Dashboard/Participants/Index', [
             'participants' => $participants
         ]);

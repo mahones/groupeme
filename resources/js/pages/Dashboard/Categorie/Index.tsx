@@ -20,16 +20,9 @@ const breadcrumbs: BreadcrumbItem[] = [
 
 export default function Categories() {
     const { categories } = usePage<PageProps>().props;
-    // const handlDelete = (categorie: Categorie) => {
-    //     if (confirm('Supprimer cette catégorie ?')) {
-    //         Inertia.delete(route('categorie.destroy', categorie.id), {
-    //             preserveScroll: true,
-    //         });
-    //     }
-    // };
     const handleDelete = (categorie: Categorie) => {
         if (confirm('Supprimer cette catégorie ?')) {
-            Inertia.delete(route('categorie.destroy', categorie.id), {
+            Inertia.delete(route('categories.destroy', categorie.id), {
                 preserveScroll: true,
             });
         }

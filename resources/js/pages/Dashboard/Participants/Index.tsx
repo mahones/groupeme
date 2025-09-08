@@ -44,7 +44,7 @@ export default function Participants() {
                         <TableHead>Nom du participant</TableHead>
                         <TableHead>Montant de participation</TableHead>
                         <TableHead>Groupement</TableHead>
-                        <TableHead>Etat</TableHead>
+                        <TableHead>Etat du groupement</TableHead>
                         <TableHead className="text-right">Actions</TableHead>
                     </TableRow>
                 </TableHeader>
@@ -56,7 +56,7 @@ export default function Participants() {
                                 <TableCell>{participant.user?.name}</TableCell>
                                 <TableCell>{participant.montant}</TableCell>
                                 <TableCell>{participant.groupement?.titre}</TableCell>
-                                <TableCell>{participant.statut}</TableCell>
+                                <TableCell>{participant.groupement?.etat_groupement?.titre}</TableCell>
                                 <TableCell className="flex justify-end text-right">
                                     <div className="flex justify-end gap-2">
                                         <Link href={route('participants.show', participant.id)}>

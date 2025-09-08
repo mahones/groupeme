@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Admin\StoreEtatGroupementRequest;
 use Illuminate\Http\Request;
 use App\Models\EtatGroupement;
 use Inertia\Inertia;
@@ -30,9 +31,11 @@ class EtatGroupementController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreEtatGroupementRequest $request)
     {
-        //
+        $valitated = $request->validated();
+        EtatGroupement::create($valitated);
+        return redirect()->route('etatgroupements.index')->with('success', 'État de groupement créé avec succès.');
     }
 
     /**

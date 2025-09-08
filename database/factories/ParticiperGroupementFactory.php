@@ -22,9 +22,7 @@ class ParticiperGroupementFactory extends Factory
         return [
             'user_id' => $user_id,
             'groupement_id' => $groupement_id,
-            'statut' => $this->faker->word,
             'montant' => $this->faker->numberBetween(1, 10),
-            'date_participation' => $this->faker->date(),
         ];
     }
 }

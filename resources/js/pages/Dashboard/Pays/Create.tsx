@@ -1,6 +1,5 @@
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
 import AppLayout from '@/layouts/app-layout';
 import { type BreadcrumbItem } from '@/types';
 import { Head, useForm } from '@inertiajs/react';
@@ -16,8 +15,8 @@ const breadcrumbs: BreadcrumbItem[] = [
 
 export default function Create() {
     const { data, setData, post } = useForm({
-        designation: '',
-        description: '',
+        nom: '',
+        lien_icon: '',
     });
 
     const handleSubmit = (e: React.FormEvent) => {
@@ -38,17 +37,13 @@ export default function Create() {
                     <div className="flex flex-col gap-4 md:flex-row">
                         <div className="flex w-full flex-col gap-4 p-4 md:w-[70%]">
                             <div className="flex justify-between">
-                                <Input
-                                    value={data.designation}
-                                    onChange={(e) => setData('designation', e.target.value)}
+                                <Input className='w-[49%]'
+                                    value={data.nom}
+                                    onChange={(e) => setData('nom', e.target.value)}
                                     placeholder="Nom du pays"
                                 />
+                                <Input  className='w-[49%]' id="lien_icon" type="file" value={data.lien_icon} name='lien_icon'  />
                             </div>
-                            <Textarea
-                                value={data.designation}
-                                onChange={(e) => setData('designation', e.target.value)}
-                                placeholder="Description du pays"
-                            />
                         </div>
                         <div className="w-full p-4 md:w-[30%]">
                             <div className="flex justify-end gap-2">

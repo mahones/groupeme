@@ -16,7 +16,8 @@ const breadcrumbs: BreadcrumbItem[] = [
 
 export default function Create() {
     const { data, setData, post } = useForm({
-        designation: '',
+        titre: '',
+        lien_url_alibaba: '',
     });
 
     const handleSubmit = (e: React.FormEvent) => {
@@ -38,15 +39,15 @@ export default function Create() {
                         <div className="flex w-full flex-col gap-4 p-4 md:w-[70%]">
                             <div className="flex justify-between">
                                 <Input
-                                    value={data.designation}
-                                    onChange={(e) => setData('designation', e.target.value)}
-                                    placeholder="Titre de la logistique"
+                                    value={data.titre}
+                                    onChange={(e) => setData('titre', e.target.value)}
+                                    placeholder="Titre de la proposition"
                                 />
                             </div>
                             <Textarea
-                                value={data.designation}
-                                onChange={(e) => setData('designation', e.target.value)}
-                                placeholder="Description de la logistique"
+                                value={data.lien_url_alibaba}
+                                onChange={(e) => setData('lien_url_alibaba', e.target.value)}
+                                placeholder="Lien URL Alibaba"
                             />
                         </div>
                         <div className="w-full p-4 md:w-[30%]">

@@ -1,9 +1,8 @@
 import { Button } from '@/components/ui/button';
 import AppLayout from '@/layouts/app-layout';
 import { type BreadcrumbItem } from '@/types';
-import {router as Inertia} from '@inertiajs/react';
 import { Logistique } from '@/types/Logistique';
-import { Head, usePage } from '@inertiajs/react';
+import { Head, router as Inertia, Link, usePage } from '@inertiajs/react';
 import { Pencil, Trash } from 'lucide-react';
 
 type ShowProps = {
@@ -20,12 +19,12 @@ const breadcrumbs: BreadcrumbItem[] = [
 export default function Logistiques() {
     const { logistique } = usePage<ShowProps>().props;
     const handleDelete = (logistique: Logistique) => {
-            if (confirm('Supprimer cette logistique ?')) {
-                Inertia.delete(route('logistiques.destroy', logistique.id), {
-                    preserveScroll: true,
-                });
-            }
-        };
+        if (confirm('Supprimer cette logistique ?')) {
+            Inertia.delete(route('logistiques.destroy', logistique.id), {
+                preserveScroll: true,
+            });
+        }
+    };
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Logistiques" />
@@ -36,7 +35,7 @@ export default function Logistiques() {
 
             <div className="p-4 shadow">
                 <h2 className="mb-2 text-xl font-semibold">{logistique.titre}</h2>
-                 <p>
+                <p>
                     <strong>ID :</strong> {logistique.id}
                 </p>
                 <p>
@@ -47,9 +46,12 @@ export default function Logistiques() {
                 </p>
 
                 <div className="flex justify-end gap-2">
-                    <Button size="sm" className="bg-blue-500 text-white hover:bg-blue-700 hover:text-gray-300">
-                        <Pencil /> Modifier
-                    </Button>
+                    <Link href={route('logistiques.edit', logistique.id)}>
+                        <Button size="sm" className="bg-blue-500 text-white hover:bg-blue-700 hover:text-gray-300">
+                            <Pencil /> Modifier
+                        </Button>
+                    </Link>
+
                     <Button size="sm" className="bg-red-500 text-white hover:bg-red-700 hover:text-gray-300" onClick={() => handleDelete(logistique)}>
                         <Trash /> Supprimer
                     </Button>

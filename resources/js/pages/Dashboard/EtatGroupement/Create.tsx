@@ -23,7 +23,7 @@ export default function Create() {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        post(route('etatgroupement.store'));
+        post(route('etatgroupements.store'));
     };
     return (
         <AppLayout breadcrumbs={breadcrumbs}>

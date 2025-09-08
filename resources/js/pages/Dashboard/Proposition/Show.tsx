@@ -3,7 +3,7 @@ import AppLayout from '@/layouts/app-layout';
 import { type BreadcrumbItem } from '@/types';
 import {router as Inertia} from '@inertiajs/react';
 import { Proposition } from '@/types/Proposition';
-import { Head, usePage } from '@inertiajs/react';
+import { Head, Link, usePage } from '@inertiajs/react';
 import { Pencil, Trash } from 'lucide-react';
 
 type ShowProps = {
@@ -47,9 +47,12 @@ const Show: React.FC = () => {
                     <strong>Nom de la personne qui propose :</strong> {proposition.user?.name}
                 </p>
                 <div className="flex justify-end gap-2">
+                    <Link href={route('propositions.edit', proposition.id)}>
                     <Button size="sm" className="bg-blue-500 text-white hover:bg-blue-700 hover:text-gray-300">
                         <Pencil /> Modifier
                     </Button>
+                    </Link>
+                    
                     <Button size="sm" className="bg-red-500 text-white hover:bg-red-700 hover:text-gray-300" onClick={() => handleDelete(proposition)}>
                         <Trash /> Supprimer
                     </Button>

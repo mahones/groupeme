@@ -1,11 +1,10 @@
 import { Button } from '@/components/ui/button';
 import AppLayout from '@/layouts/app-layout';
-import {router as Inertia} from '@inertiajs/react';
 import { type BreadcrumbItem } from '@/types';
-import { Head, usePage } from '@inertiajs/react';
+import { Pays } from '@/types/Pays';
+import { Head, router as Inertia, Link, usePage } from '@inertiajs/react';
 import { Pencil, Trash } from 'lucide-react';
 import React from 'react';
-import {Pays} from '@/types/Pays' ;
 
 type ShowProps = {
     pays: Pays;
@@ -21,12 +20,12 @@ const breadcrumbs: BreadcrumbItem[] = [
 const Show: React.FC = () => {
     const { pays } = usePage<ShowProps>().props;
     const handleDelete = (pays: Pays) => {
-            if (confirm('Supprimer ce pays ?')) {
-                Inertia.delete(route('pays.destroy', pays.id), {
-                    preserveScroll: true,
-                });
-            }
-        };
+        if (confirm('Supprimer ce pays ?')) {
+            Inertia.delete(route('pays.destroy', pays.id), {
+                preserveScroll: true,
+            });
+        }
+    };
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Pays" />
@@ -36,7 +35,7 @@ const Show: React.FC = () => {
             </div>
             <div className="p-4 shadow">
                 <h2 className="mb-2 text-xl font-semibold">{pays.nom}</h2>
-                 <p>
+                <p>
                     <strong>ID :</strong> {pays.id}
                 </p>
                 <p>
@@ -46,9 +45,12 @@ const Show: React.FC = () => {
                     <strong>Icon :</strong> {pays.lien_icon}
                 </p>
                 <div className="flex justify-end gap-2">
-                    <Button size="sm" className="bg-blue-500 text-white hover:bg-blue-700 hover:text-gray-300">
-                        <Pencil /> Modifier
-                    </Button>
+                    <Link href={route('pays.edit', pays.id)}>
+                        <Button size="sm" className="bg-blue-500 text-white hover:bg-blue-700 hover:text-gray-300">
+                            <Pencil /> Modifier
+                        </Button>
+                    </Link>
+
                     <Button size="sm" className="bg-red-500 text-white hover:bg-red-700 hover:text-gray-300" onClick={() => handleDelete(pays)}>
                         <Trash /> Supprimer
                     </Button>
@@ -57,6 +59,6 @@ const Show: React.FC = () => {
             <div className="flex h-full flex-1 flex-col gap-4 overflow-x-auto rounded-xl p-4"></div>
         </AppLayout>
     );
-}
+};
 
 export default Show;

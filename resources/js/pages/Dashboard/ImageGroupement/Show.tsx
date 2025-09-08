@@ -1,9 +1,8 @@
 import { Button } from '@/components/ui/button';
 import AppLayout from '@/layouts/app-layout';
 import { type BreadcrumbItem } from '@/types';
-import {router as Inertia} from '@inertiajs/react';
 import { Image } from '@/types/Image';
-import { Head, usePage } from '@inertiajs/react';
+import { Head, router as Inertia, Link, usePage } from '@inertiajs/react';
 import { Pencil, Trash } from 'lucide-react';
 
 type ShowProps = {
@@ -19,12 +18,12 @@ const breadcrumbs: BreadcrumbItem[] = [
 const Show: React.FC = () => {
     const { image } = usePage<ShowProps>().props;
     const handleDelete = (image: Image) => {
-            if (confirm('Supprimer cette image ?')) {
-                Inertia.delete(route('images_groupement.destroy', image.id), {
-                    preserveScroll: true,
-                });
-            }
-        };
+        if (confirm('Supprimer cette image ?')) {
+            Inertia.delete(route('images_groupement.destroy', image.id), {
+                preserveScroll: true,
+            });
+        }
+    };
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Images" />
@@ -38,9 +37,12 @@ const Show: React.FC = () => {
                 </div>
 
                 <div className="flex justify-end gap-2">
-                    <Button size="sm" className="bg-blue-500 text-white hover:bg-blue-700 hover:text-gray-300">
-                        <Pencil /> Modifier
-                    </Button>
+                    <Link href={route('images_groupement.edit', image.id)}>
+                        <Button size="sm" className="bg-blue-500 text-white hover:bg-blue-700 hover:text-gray-300">
+                            <Pencil /> Modifier
+                        </Button>
+                    </Link>
+
                     <Button size="sm" className="bg-red-500 text-white hover:bg-red-700 hover:text-gray-300" onClick={() => handleDelete(image)}>
                         <Trash /> Supprimer
                     </Button>

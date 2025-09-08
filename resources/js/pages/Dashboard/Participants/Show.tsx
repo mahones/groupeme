@@ -1,9 +1,8 @@
 import { Button } from '@/components/ui/button';
 import AppLayout from '@/layouts/app-layout';
-import {router as Inertia} from '@inertiajs/react';
 import { type BreadcrumbItem } from '@/types';
 import { Participant } from '@/types/Participant';
-import { Head, usePage } from '@inertiajs/react';
+import { Head, router as Inertia, Link, usePage } from '@inertiajs/react';
 import { Pencil, Trash } from 'lucide-react';
 
 type PageProps = {
@@ -20,12 +19,12 @@ const breadcrumbs: BreadcrumbItem[] = [
 export default function Participants() {
     const { participant } = usePage<PageProps>().props;
     const handleDelete = (participant: Participant) => {
-            if (confirm('Supprimer ce participant ?')) {
-                Inertia.delete(route('participants.destroy', participant.id), {
-                    preserveScroll: true,
-                });
-            }
-        };
+        if (confirm('Supprimer ce participant ?')) {
+            Inertia.delete(route('participants.destroy', participant.id), {
+                preserveScroll: true,
+            });
+        }
+    };
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Participants" />
@@ -54,10 +53,17 @@ export default function Participants() {
                 </p>
 
                 <div className="flex justify-end gap-2">
-                    <Button size="sm" className="bg-blue-500 text-white hover:bg-blue-700 hover:text-gray-300">
-                        <Pencil /> Modifier
-                    </Button>
-                    <Button size="sm" className="bg-red-500 text-white hover:bg-red-700 hover:text-gray-300" onClick={() => handleDelete(participant)}>
+                    <Link href={route('participants.edit', participant.id)}>
+                        <Button size="sm" className="bg-blue-500 text-white hover:bg-blue-700 hover:text-gray-300">
+                            <Pencil /> Modifier
+                        </Button>
+                    </Link>
+
+                    <Button
+                        size="sm"
+                        className="bg-red-500 text-white hover:bg-red-700 hover:text-gray-300"
+                        onClick={() => handleDelete(participant)}
+                    >
                         <Trash /> Supprimer
                     </Button>
                 </div>

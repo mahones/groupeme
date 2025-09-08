@@ -35,7 +35,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('categories/store', [CategorieController::class, 'store'])->name('categories.store');
     Route::get('categories/edit/{categorie}', [CategorieController::class, 'edit'])->name('categories.edit');
     Route::get('categories/show/{categorie}', [CategorieController::class, 'show'])->name('categories.show');
-    Route::delete('categories/{categorie}', [CategorieController::class, 'destroy'])->name('categorie.destroy');
+    Route::delete('categories/{categorie}', [CategorieController::class, 'destroy'])->name('categories.destroy');
     
 
     /*************  ✨ Etat Groupement ✨   *************/

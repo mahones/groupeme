@@ -11,9 +11,7 @@ class ParticiperGroupement extends Model
     protected $fillable = [
         'user_id',
         'groupement_id',
-        'statut',
         'montant',
-        'date_participation'
     ];
 
     public function user()

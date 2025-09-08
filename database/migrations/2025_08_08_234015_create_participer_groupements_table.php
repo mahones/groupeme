@@ -15,9 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('groupement_id')->constrained()->onDelete('cascade');
-            $table->string('statut')->default('intéressé'); // valeurs possibles : intéressé, payé, livré
             $table->decimal('montant', 10, 2)->nullable();
-            $table->timestamp('date_participation')->nullable();
             $table->timestamps();
             $table->unique(['user_id', 'groupement_id']);
         });

@@ -70,6 +70,7 @@ export default function Create() {
                                     value={data.designation}
                                     onChange={(e) => setData('designation', e.target.value)}
                                     placeholder="Titre de l'état de groupement"
+                                    multiple 
                                 />
                             </div>
                             <div className="flex flex-wrap justify-between gap-2">
