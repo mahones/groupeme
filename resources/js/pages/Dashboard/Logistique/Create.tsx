@@ -49,7 +49,6 @@ export default function Create() {
                                 onChange={(e) => setData('description', e.target.value)}
                                 placeholder="Description de la logistique"
                             />
-
                         </div>
                         <div className="w-full p-4 md:w-[30%]">
                             <div className="flex justify-end gap-2">
@@ -63,6 +62,7 @@ export default function Create() {
                         </div>
                     </div>
                 </form>
+                
             </div>
         </AppLayout>
     );

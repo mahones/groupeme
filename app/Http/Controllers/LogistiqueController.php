@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Admin\StoreLogistiqueRequest;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\Logistique;
@@ -30,9 +31,11 @@ class LogistiqueController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreLogistiqueRequest $request)
     {
-        //
+        $validate = $request->validated();
+        Logistique::create($validate);
+        return redirect()->route('logistiques.index')->with('success','logistique créer avec success');
     }
 
     /**
