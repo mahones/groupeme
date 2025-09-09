@@ -45,6 +45,7 @@ export default function Groupements() {
                         <TableHead>Participants</TableHead>
                         <TableHead>Pays</TableHead>
                         <TableHead>Catégorie</TableHead>
+                        <TableHead>Créer par</TableHead>
                         <TableHead className="text-right">Actions</TableHead>
                     </TableRow>
                 </TableHeader>
@@ -58,6 +59,7 @@ export default function Groupements() {
                                 <TableCell>{groupement.minimum_participant}</TableCell>
                                 <TableCell>{groupement.pays?.nom}</TableCell>
                                 <TableCell>{groupement.categorie?.titre}</TableCell>
+                                <TableCell>{groupement.user?.name}</TableCell>
                                 <TableCell className="flex justify-end text-right">
                                     <div className="flex justify-end gap-2">
                                         <Link href={route('groupements.show', { id: groupement.id })}>

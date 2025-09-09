@@ -41,7 +41,6 @@ export default function Create() {
         logistique_id: '',
         pays_id: '',
         etat_groupement_id: '',
-        user_id: '',
         date_cloture: '',
     });
 

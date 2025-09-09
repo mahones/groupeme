@@ -67,6 +67,9 @@ const Show: React.FC = () => {
                 <p>
                     <strong>Etat de groupement :</strong> {groupement.etat_groupement?.titre}
                 </p>
+                <p>
+                    <strong>Créer par :</strong> {groupement.user?.name}
+                </p>
                 <div className="flex justify-end gap-2">
                     <Link href={route('groupements.edit', groupement.id)}>
                         <Button size="sm" className="bg-blue-500 text-white hover:bg-blue-700 hover:text-gray-300">

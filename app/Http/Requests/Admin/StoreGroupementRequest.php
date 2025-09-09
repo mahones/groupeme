@@ -30,7 +30,6 @@ class StoreGroupementRequest extends FormRequest
             'logistique_id' => 'required|exists:logistiques,id',
             'pays_id' => 'required|exists:pays,id',
             'etat_groupement_id' => 'required|exists:etat_groupements,id',
-            'user_id' => 'required|exists:users,id',
             'date_cloture' => 'required|date|after:today',      // --- IGNORE ---
         ];
     }

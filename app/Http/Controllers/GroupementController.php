@@ -17,7 +17,7 @@ class GroupementController extends Controller
      */
     public function index()
     {
-        $groupements = Groupement::with(['categorie', 'logistique', 'pays', 'etatGroupement', 'images'])->get();
+        $groupements = Groupement::with(['categorie', 'logistique', 'pays', 'etatGroupement', 'images', 'user'])->get();
         return inertia('Dashboard/Groupement/Index', [
             'groupements' => $groupements
         ]);
@@ -48,7 +48,7 @@ class GroupementController extends Controller
 
         // je dois revoir cette partie
         $validated = $request->validated();
-        $groupement['user_id'] = auth()->id();
+        $validated['user_id'] = auth()->id();
         $groupement = Groupement::create($validated);
         
 
@@ -70,7 +70,7 @@ class GroupementController extends Controller
      */
     public function show(Groupement $groupement)
     {
-        $groupement_find = Groupement::with(['categorie', 'logistique', 'pays', 'etatGroupement', 'images'])->find($groupement->id);
+        $groupement_find = Groupement::with(['categorie', 'logistique', 'pays', 'etatGroupement', 'images', 'user'])->find($groupement->id);
         return inertia('Dashboard/Groupement/Show', [
             'groupement' => $groupement_find
         ]);

@@ -46,7 +46,7 @@ class Groupement extends Model
         return $this->hasMany(ParticiperGroupement::class);
         
     }
-    public function iscreatedby()
+    public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
     } 
