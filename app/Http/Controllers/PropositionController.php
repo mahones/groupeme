@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Admin\StorePropositionRequest;
 use Illuminate\Http\Request;
 use App\Models\Proposition;
 use Inertia\Inertia;
@@ -22,6 +23,7 @@ class PropositionController extends Controller
     /**
      * Show the form for creating a new resource.
      */
+
     public function create()
     {
         return Inertia::render('Dashboard/Proposition/Create');
@@ -30,11 +32,13 @@ class PropositionController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StorePropositionRequest $request)
     {
-        //
+        $validate = $request->validated();
+        $validate['user_id'] = auth()->id();
+        Proposition::create($validate);
+        return redirect()->route('propositions.index')->with('success','Proposition créer avec success');
     }
-
     /**
      * Display the specified resource.
      */

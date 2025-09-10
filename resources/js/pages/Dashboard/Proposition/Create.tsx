@@ -1,6 +1,5 @@
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
 import AppLayout from '@/layouts/app-layout';
 import { type BreadcrumbItem } from '@/types';
 import { Head, useForm } from '@inertiajs/react';
@@ -39,16 +38,20 @@ export default function Create() {
                         <div className="flex w-full flex-col gap-4 p-4 md:w-[70%]">
                             <div className="flex justify-between">
                                 <Input
+                                    className="w-[49%]"
+                                    type="text"
                                     value={data.titre}
                                     onChange={(e) => setData('titre', e.target.value)}
                                     placeholder="Titre de la proposition"
                                 />
+                                <Input
+                                    className="w-[49%]"
+                                    type="link"
+                                    value={data.lien_url_alibaba}
+                                    onChange={(e) => setData('lien_url_alibaba', e.target.value)}
+                                    placeholder="Lien URL Alibaba"
+                                />
                             </div>
-                            <Textarea
-                                value={data.lien_url_alibaba}
-                                onChange={(e) => setData('lien_url_alibaba', e.target.value)}
-                                placeholder="Lien URL Alibaba"
-                            />
                         </div>
                         <div className="w-full p-4 md:w-[30%]">
                             <div className="flex justify-end gap-2">

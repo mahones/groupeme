@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ParticiperGroupement;
+use App\Http\Requests\Admin\StoreParticipantRequest;
 use App\Models\Groupement;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -36,9 +37,21 @@ class ParticiperGroupementController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreParticipantRequest $request)
     {
-        //
+        $validate = $request->validated();
+        $exists = ParticiperGroupement::where('user_id', $validate['user_id'])
+        ->where('groupement_id', $validate['groupement_id'])
+        ->exists();
+        if ($exists) {
+            return back()->with('ERROR','Cette participation exist déja');
+        } else {
+            ParticiperGroupement::create($validate);
+        }
+
+        return redirect()->route('participants.index')->with('success','Participation creer');
+
+
     }
 
     /**

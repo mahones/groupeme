@@ -50,7 +50,6 @@ class GroupementController extends Controller
         $validated = $request->validated();
         $validated['user_id'] = auth()->id();
         $groupement = Groupement::create($validated);
-        
 
         if ($request->hasFile('image_url')) {
             foreach ($request->file('image_url') as $image) {
@@ -61,7 +60,6 @@ class GroupementController extends Controller
                 ]);
             }
         }
-
         return redirect()->route('groupements.index')->with('success', 'Groupement créé avec succès.');
     }
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Admin\StoreUserRequest;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\User;
@@ -35,9 +36,11 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreUserRequest $request)
     {
-        //
+        $validate = $request->validated();
+        User::create($validate);
+        return redirect()->route('users.index')->with('success','Utilisateur créer avec success');
     }
 
     /**

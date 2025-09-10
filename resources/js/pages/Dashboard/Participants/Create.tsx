@@ -42,12 +42,11 @@ export default function Create() {
             </div>
             <div className="p-4 shadow">
                 <h2 className="mb-2 text-xl font-semibold"></h2>
-
                 <form onSubmit={handleSubmit}>
                     <div className="flex flex-col gap-4 md:flex-row">
                         <div className="flex w-full flex-col gap-4 p-4 md:w-[70%]">
                             <div className="flex justify-between">
-                                <Select>
+                                <Select value= {data.groupement_id} onValueChange={(value) => setData('groupement_id', value)}>
                                     <SelectTrigger className="w-[49%]">
                                         <SelectValue placeholder="Goupements" />
                                     </SelectTrigger>
@@ -65,7 +64,7 @@ export default function Create() {
                                         )}
                                     </SelectContent>
                                 </Select>
-                                <Select>
+                                <Select value={data.user_id} onValueChange={(value) => setData('user_id', value)}>
                                     <SelectTrigger className="w-[49%]">
                                         <SelectValue placeholder="Utilistateur" />
                                     </SelectTrigger>
@@ -91,12 +90,6 @@ export default function Create() {
                                     onChange={(e) => setData('montant', e.target.value)}
                                     placeholder="Montant"
                                 />
-                                {/* <Input
-                                    className="w-[49%]"
-                                    value={data.montant}
-                                    onChange={(e) => setData('montant', e.target.value)}
-                                    placeholder="Montant"
-                                /> */}
                             </div>
                         </div>
                         <div className="w-full p-4 md:w-[30%]">
