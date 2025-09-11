@@ -1,10 +1,9 @@
 import { Button } from '@/components/ui/button';
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import AppLayout from '@/layouts/app-layout';
-import { router as Inertia } from '@inertiajs/react'
 import { type BreadcrumbItem } from '@/types';
 import { Image } from '@/types/Image';
-import { Link, Head, usePage } from '@inertiajs/react';
+import { Head, router as Inertia, Link, usePage } from '@inertiajs/react';
 import { Lightbulb, Pencil, Trash } from 'lucide-react';
 
 type PageProps = {
@@ -51,7 +50,9 @@ export default function Images() {
                         images.map((image) => (
                             <TableRow key={image.id}>
                                 <TableCell className="font-medium">{image.id}</TableCell>
-                                <TableCell>{image.image_url}</TableCell>
+                                <TableCell>
+                                    <img src={`/storage/${image.image_url}`} alt="Image" style={{ maxWidth: 100, maxHeight: 100 }} />
+                                </TableCell>
                                 <TableCell>{image.groupement?.titre}</TableCell>
                                 <TableCell className="flex justify-end text-right">
                                     <div className="flex justify-end gap-2">
@@ -65,10 +66,13 @@ export default function Images() {
                                                 <Pencil />
                                             </Button>
                                         </Link>
-                                        <Button size="sm" className="bg-red-500 text-white hover:bg-red-700 hover:text-gray-300" onClick={() => handleDelete(image)}>
+                                        <Button
+                                            size="sm"
+                                            className="bg-red-500 text-white hover:bg-red-700 hover:text-gray-300"
+                                            onClick={() => handleDelete(image)}
+                                        >
                                             <Trash />
                                         </Button>
-                                        
                                     </div>
                                 </TableCell>
                             </TableRow>

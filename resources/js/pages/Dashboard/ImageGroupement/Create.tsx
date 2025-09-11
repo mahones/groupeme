@@ -24,7 +24,8 @@ const breadcrumbs: BreadcrumbItem[] = [
 export default function Create() {
     const { groupements } = usePage<PageProps>().props;
     const { data, setData, post } = useForm({
-        designation: '',
+        image_url: '',
+        groupement_id: '',
     });
 
     const handleSubmit = (e: React.FormEvent) => {
@@ -45,7 +46,7 @@ export default function Create() {
                     <div className="flex flex-col gap-4 md:flex-row">
                         <div className="flex w-full flex-col gap-4 p-4 md:w-[70%]">
                             <div className="flex justify-between">
-                                <Select>
+                                <Select value={data.groupement_id} onValueChange={(value) => setData('groupement_id', value)}>
                                     <SelectTrigger className="w-[49%]">
                                         <SelectValue placeholder="Groupement" />
                                     </SelectTrigger>
@@ -67,10 +68,10 @@ export default function Create() {
                                     id="picture"
                                     type="file"
                                     className="w-[49%]"
-                                    value={data.designation}
-                                    onChange={(e) => setData('designation', e.target.value)}
+                                    value={data.image_url}
+                                    onChange={(e) => setData('image_url', e.target.value)}
                                     placeholder="Titre de l'état de groupement"
-                                    multiple 
+                                    multiple
                                 />
                             </div>
                             <div className="flex flex-wrap justify-between gap-2">

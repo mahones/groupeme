@@ -43,7 +43,7 @@ const Show: React.FC = () => {
                             {images.length > 0 &&
                                 images.map((image) => (
                                     <CarouselItem key={image.id}>
-                                        <img src={image.image_url} alt={image.image_url} className="h-32 w-full object-cover" />
+                                        <img src={`/images/${image.image_url}`} alt={image.image_url} className="h-32 w-full object-cover" />
                                     </CarouselItem>
                                 ))}
                         </CarouselContent>

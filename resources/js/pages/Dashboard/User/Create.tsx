@@ -26,6 +26,7 @@ export default function Create() {
         telephone: '',
         email: '',
         password: '',
+        password_confirmation: '',
         role_id: '',
     });
 
@@ -47,12 +48,7 @@ export default function Create() {
                     <div className="flex flex-col gap-4 md:flex-row">
                         <div className="flex w-full flex-col gap-4 p-4 md:w-[70%]">
                             <div className="flex justify-between">
-                                <Input
-                                    className="w-[49%]"
-                                    value={data.name}
-                                    onChange={(e) => setData('name', e.target.value)}
-                                    placeholder="Nom"
-                                />
+                                <Input className="w-[49%]" value={data.name} onChange={(e) => setData('name', e.target.value)} placeholder="Nom" />
                                 <Input
                                     className="w-[49%]"
                                     value={data.telephone}
@@ -86,6 +82,24 @@ export default function Create() {
                                         )}
                                     </SelectContent>
                                 </Select>
+                            </div>
+                            <div className="flex justify-between">
+                                <Input
+                                    className="w-[49%]"
+                                    type="password"
+                                    value={data.password}
+                                    onChange={(e) => setData('password', e.target.value)}
+                                    placeholder="Mot de passe"
+                                />
+
+                                <Input
+                                    className="w-[49%]"
+                                    type="password"
+                                    value={data.password_confirmation}
+                                    onChange={(e) => setData('password_confirmation', e.target.value)}
+                                    placeholder="Mot de passe"
+                                />
+                                
                             </div>
                         </div>
                         <div className="w-full p-4 md:w-[30%]">

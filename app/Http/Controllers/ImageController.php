@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Admin\StoreImageRequest;
 use Illuminate\Http\Request;
 use App\Models\Image;
 use App\Models\Groupement;
@@ -33,9 +34,20 @@ class ImageController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreImageRequest $request)
     {
-        //
+        // $validated = $request->validated();
+
+        if ($request->hasFile('image_url')) {
+            foreach ($request->file('image_url') as $image) {
+                $path = $image->store('images', 'public');
+                Image::create([
+                    'image_url' => $path,
+                    'groupement_id' => $request->groupement_id,
+                ]);
+            }
+        }
+        return redirect()->route('images_groupement.index')->with('success', 'Image(s) enregistrée(s) avec succès.');
     }
 
     /**
